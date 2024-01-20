@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  athlete: one
+  title: MyString
+  location: MyString
+  content: MyText
+  exclusif: false
+
+two:
+  athlete: two
+  title: MyString
+  location: MyString
+  content: MyText
+  exclusif: false
