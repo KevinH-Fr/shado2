@@ -20,6 +20,11 @@ Rails.application.routes.draw do
 
   #steps account
   get 'steps_user/fan_account'
+  get 'steps_user/fan_subscribe'
+  get 'steps_user/athlete_account'
+  get 'steps_user/athlete_campaign'
+
+
 
 
   #stripe

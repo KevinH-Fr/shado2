@@ -28,7 +28,7 @@ class AthletesController < ApplicationController
 
     respond_to do |format|
       if @athlete.save
-        format.html { redirect_to athlete_url(@athlete), notice: "Athlete was successfully created." }
+        format.html { redirect_to steps_user_athlete_campaign_path, notice: "Athlete was successfully created." }
         format.json { render :show, status: :created, location: @athlete }
       else
         format.html { render :new, status: :unprocessable_entity }

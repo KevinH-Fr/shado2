@@ -25,7 +25,8 @@ class FansController < ApplicationController
 
     respond_to do |format|
       if @fan.save
-        format.html { redirect_to fan_url(@fan), notice: "Fan was successfully created." }
+        format.html { redirect_to steps_user_fan_subscribe_path, notice: "Fan was successfully created." }
+
         format.json { render :show, status: :created, location: @fan }
       else
         format.html { render :new, status: :unprocessable_entity }
