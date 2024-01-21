@@ -18,6 +18,8 @@ class AthletesController < ApplicationController
 
   # GET /athletes/1/edit
   def edit
+    @sports = Sport.all
+
   end
 
   # POST /athletes or /athletes.json
@@ -66,6 +68,6 @@ class AthletesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def athlete_params
-      params.require(:athlete).permit(:user_id, :sport_id, :name, :bio)
+      params.require(:athlete).permit(:user_id, :profile_pic, :panorama_pic, :sport_id, :name, :bio)
     end
 end

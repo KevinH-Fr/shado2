@@ -65,6 +65,6 @@ class FansController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fan_params
-      params.require(:fan).permit(:user_id, :pseudo, :bio)
+      params.require(:fan).permit(:user_id, :profile_pic, :pseudo, :bio)
     end
 end

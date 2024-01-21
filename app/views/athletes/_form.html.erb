@@ -16,10 +16,22 @@
     <%= form.text_field :user_id, value: current_user.id %>
   </div>
 
+
+
   <div>
     <%= form.label :sport_id, style: "display: block" %>
     <%= form.select :sport_id, @sports.collect { |c| [c.name, c.id] }, 
         {include_blank: :true}, class: "form-select text-center" %>  
+  </div>
+
+  <div class="input-group input-group mb-2">
+    <%= form.label :profile_pic, class: "input-group-text label-colored" %>
+    <%= form.file_field :profile_pic, accept: "image/jpeg, image/png", class: "form-control input-colored"%>
+  </div>
+
+  <div class="input-group input-group mb-2">
+    <%= form.label :panorama_pic, class: "input-group-text label-colored" %>
+    <%= form.file_field :panorama_pic, accept: "image/jpeg, image/png", class: "form-control input-colored"%>
   </div>
 
   <div>

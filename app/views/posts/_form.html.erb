@@ -30,6 +30,12 @@
     <%= form.label :content, style: "display: block" %>
     <%= form.text_area :content %>
   </div>
+    
+  <div>
+    <span class="fa fa-photo-film btn-main"></span>
+    <%= form.file_field :media %>
+  </div>
+
 
   <div>
     <%= form.label :exclusif, style: "display: block" %>
