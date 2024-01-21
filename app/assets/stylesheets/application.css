@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .exclusive-post {
+    filter: blur(5px); /* Adjust the blur intensity as needed */
+  }
