@@ -13,6 +13,7 @@ class AthletesController < ApplicationController
   # GET /athletes/new
   def new
     @athlete = Athlete.new
+    @sports = Sport.all
   end
 
   # GET /athletes/1/edit
@@ -65,6 +66,6 @@ class AthletesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def athlete_params
-      params.require(:athlete).permit(:user_id, :name, :bio)
+      params.require(:athlete).permit(:user_id, :sport_id, :name, :bio)
     end
 end

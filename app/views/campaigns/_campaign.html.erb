@@ -44,4 +44,10 @@
     <%= campaign.thankyounote %>
   </p>
 
+  <div data-turbo='false'>
+    <%= form_with url: :create_checkout_session do |f| %>
+      <%= f.hidden_field :id, value: campaign.id %>
+      <%= f.submit 'Subscribe', class: "btn btn-success m-1 w-100 fa fa-fade", style: "font-family: Arial, sans-serif;" %>
+    <% end %>
+  </div>
 </div>

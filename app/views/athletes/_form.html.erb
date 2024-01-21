@@ -17,6 +17,12 @@
   </div>
 
   <div>
+    <%= form.label :sport_id, style: "display: block" %>
+    <%= form.select :sport_id, @sports.collect { |c| [c.name, c.id] }, 
+        {include_blank: :true}, class: "form-select text-center" %>  
+  </div>
+
+  <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>

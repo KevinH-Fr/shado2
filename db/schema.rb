@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_20_212259) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_21_001325) do
   create_table "athletes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name"
     t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sport_id", null: false
+    t.index ["sport_id"], name: "index_athletes_on_sport_id"
     t.index ["user_id"], name: "index_athletes_on_user_id"
   end
 
@@ -32,6 +34,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_20_212259) do
     t.text "thankyounote"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "stripe_product_id"
+    t.boolean "recurrent"
+    t.string "stripe_price_id"
+    t.string "status"
     t.index ["athlete_id"], name: "index_campaigns_on_athlete_id"
   end
 
@@ -62,6 +68,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_20_212259) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "campaign_id", null: false
+    t.integer "fan_id", null: false
+    t.string "stripe_product_id"
+    t.string "stripe_price_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status"
+    t.index ["campaign_id"], name: "index_subscriptions_on_campaign_id"
+    t.index ["fan_id"], name: "index_subscriptions_on_fan_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -74,8 +92,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_20_212259) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "athletes", "sports"
   add_foreign_key "athletes", "users"
   add_foreign_key "campaigns", "athletes"
   add_foreign_key "fans", "users"
   add_foreign_key "posts", "athletes"
+  add_foreign_key "subscriptions", "campaigns"
+  add_foreign_key "subscriptions", "fans"
 end

@@ -1,18 +1,13 @@
 <h1>Pages#index</h1>
 
 <%= link_to "athletes", athletes_path %> <br>
-<%# limiter la creation que si pas deja compte athlete ou fan avec meme user %>
-<%= link_to "create athlete profile", new_athlete_path %> <br>
 
 <%# limiter la creation que si pas user athlete %>
 <%= link_to "new post", new_post_path %>
 
-
 <hr>
 
 <%= link_to "fans", fans_path %> <br>
-<%# limiter la creation que si pas deja compte athlete ou fan avec meme user %>
-<%= link_to "create fan profile", new_fan_path %> <br>
 
 <%= link_to "posts", posts_path %>
 
@@ -24,3 +19,10 @@
 
 <%# limiter la creation auw athlete %>
 <%= link_to "campaigns", campaigns_path %>
+
+<hr>
+<%# limiter aux admins  %>
+<%= link_to "sports", sports_path %>
+
+<hr>
+<%= link_to "subscriptions", subscriptions_path %>

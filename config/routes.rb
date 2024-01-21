@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :subscriptions
   resources :sports
   resources :campaigns
   resources :posts
@@ -6,7 +7,11 @@ Rails.application.routes.draw do
   resources :athletes
   devise_for :users
   get 'pages/index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+
+  get 'purchase_success', to: 'stripe#purchase_success'
+
+  post 'create-checkout-session', to: 'campaigns#create_checkout_session'
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
