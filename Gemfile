@@ -75,3 +75,5 @@ gem "devise", "~> 4.9"
 gem 'stripe'
 
 gem 'pagy'
+
+gem 'ransack'

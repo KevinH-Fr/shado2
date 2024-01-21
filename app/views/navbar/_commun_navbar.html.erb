@@ -1,12 +1,24 @@
 
-<%= link_to root_path, class: "navlink position-relative" do %>
-  <i class="bi bi-house icon-navbar middled"></i>
-  <span class="text-navbar middled"> Home </span>
+<% if current_user && athlete_user %>
+  <%= link_to root_path, class: "navlink position-relative" do %>
+    <i class="bi bi-house icon-navbar middled"></i>
+    <span class="text-navbar middled"> Home </span>
+  <% end %>
+<% else %>
+  <%= link_to root_path, class: "navlink position-relative" do %>
+    <i class="bi bi-house icon-navbar middled"></i>
+    <span class="text-navbar middled"> Home </span>
+  <% end %>
 <% end %>
 
 <%= link_to athletes_path, class: "navlink position-relative" do %>
   <i class="bi bi-star icon-navbar middled"></i>
   <span class="text-navbar middled"> Subs </span>
+<% end %>  
+
+<%= link_to search_index_path, class: "navlink position-relative" do %>
+  <i class="bi bi-search icon-navbar middled"></i>
+  <span class="text-navbar middled"> Search  </span>
 <% end %>  
 
 <% if current_user %>

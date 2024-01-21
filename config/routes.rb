@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   
   get 'pages/index'
   
-  
+  get 'search/index'
+
   #devise_for :users
   devise_for :users, controllers: { 
     registrations: 'users/registrations',
