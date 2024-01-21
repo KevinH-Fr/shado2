@@ -9,9 +9,8 @@
     <%= athlete.name %>
   </p>
 
-  <%= image_tag(athlete.panorama_pic, class: "card-img-top profile-pic mx-auto d-block my-2") %>
-
-  <%= image_tag(athlete.profile_pic, class: "card-img-top profile-pic mx-auto d-block my-2") %>
+  <%= image_tag(athlete.panorama_pic, class: "card-img-top profile-pic mx-auto d-block my-2") if athlete.panorama_pic.present? %>
+  <%= image_tag(athlete.profile_pic, class: "card-img-top profile-pic mx-auto d-block my-2") if athlete.profile_pic.present? %>
 
   <p>
     <strong>Bio:</strong>

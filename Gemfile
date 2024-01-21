@@ -73,3 +73,5 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem "devise", "~> 4.9"
 
 gem 'stripe'
+
+gem 'pagy'

@@ -1,4 +1,3 @@
-<h1>Pages#index</h1>
 
 <%= link_to "athletes", athletes_path %> <br>
 
@@ -29,11 +28,14 @@
 
 <hr>
 
-
-<h4 class="mt-4">Tous les posts</h4>
-
-<div id="posts">
-    <% @posts.each do |post| %>
-        <%= render post %>
-    <% end %>
+<div id="partial-container" class="p-2 mt-2">
+   <%# recoit le turbo stream avec elements cliqués %>
 </div>
+
+
+<%# test feeds infinite scroll %>
+<h4 class="text-center">Posts</h4> 
+<div id="posts" class="p-2"> </div>
+
+<%= turbo_frame_tag :pagination, loading: :lazy, src: pages_index_path(format: :turbo_stream) %>
+

@@ -18,3 +18,127 @@
  .exclusive-post {
     filter: blur(5px); /* Adjust the blur intensity as needed */
   }
+
+  /* NAVBAR */ 
+
+.navlink{
+  margin: .3em;
+  padding: .4em;
+  font-size: x-large;
+  border-radius: 20px;
+  display: block;
+  text-decoration: none;
+  color: grey;
+  min-width: 200px;
+}
+
+.navlink:hover{ 
+  background-color: #E5F7FD;
+  color: #00AFF0;
+}
+
+.brand-colored{
+color: #00AFF0;
+}
+
+
+.brand-bg-colored{
+background-color: #00AFF0;
+}
+
+
+.right-bordered{
+border-right: 1px solid rgb(180, 180, 180);
+
+}
+
+.nav-newpost{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: x-large;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #00AFF0;
+  margin: .5em;
+  margin-top: .5em;
+  padding: .5em;
+  border-radius: 30px;
+  min-width: 220px;
+}
+
+.icon-navbar{
+  font-size: 1.2em;
+}
+
+.text-navbar{
+  margin: .2em;
+}
+
+
+/* CARD PROFILE  */
+
+.profile-card-text {
+  /*  padding-left: 50px;*/
+  }
+
+  .sized {
+    height: 250px;
+    width: 100%;
+  }
+
+  .sized-fan-panorama {
+    height: 150px;
+    width: 100%;
+  }
+
+  .panorama-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center center;
+    max-height: 250px;
+  }
+
+  .image_wrapper {
+    position: relative;
+  }
+
+  .profile-pic-overlay {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .profile-pic-fan-overlay {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .profile-pic {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 100px;
+    border: 5px solid white;
+    cursor: pointer;
+  }
+
+  .profile-pic-mini {
+    width: 65px;
+    height: 65px;
+    object-position: center center;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+  }
+  
+  .profile-pic-gap{
+    margin-top: 100px;
+  }

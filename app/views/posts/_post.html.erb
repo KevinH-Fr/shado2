@@ -1,33 +1,21 @@
 <div id="<%= dom_id post %>" class="card m-2">
 
   <div class="<%= visible(post) ? '' : 'exclusive-post' %>">
-    <p>
-      <strong>Athlete:</strong>
-      <%= post.athlete_id %>
-    </p>
 
-    <p>
-      <strong>Title:</strong>
-      <%= post.title %>
-    </p>
+    <div class="ms-2">
+      <%= link_to image_tag(post.athlete.default_profile_pic, class:"profile-pic-mini"), athlete_path(post.athlete)  %>
+      <span class="fw-bold"> <%= link_to post.athlete.name, athlete_path(post.athlete), class:"no-underline" %></span> 
+      <small> <%= time_ago_in_words(post.created_at) %> ago </small> <br> 
+    </div>
 
-    <p>
-      <strong>Location:</strong>
-      <%= post.location %>
-    </p>
+    <div>
+        <%= render 'posts/attachment', post: post %>
+    </div>
+    
+    <div class="my-1 ms-3"> 
+      <%= post.content %> 
+    </div>
 
-    <p>
-      <strong>Content:</strong>
-      <%= post.content %>
-    </p>
-
-    <%= render 'posts/attachment', post: post %>
-
-
-    <p>
-      <strong>Exclusive:</strong>
-      <%= post.exclusif %>
-    </p>
   </div>
 
 </div>
