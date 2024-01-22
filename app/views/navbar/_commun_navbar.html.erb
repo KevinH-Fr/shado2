@@ -1,9 +1,13 @@
 
-<% if current_user && athlete_user %>
-  <%= link_to root_path, class: "navlink position-relative" do %>
+  <%= link_to root_path, class: "navlink position-relative btn-nav", data: { controller: "button-color", action: "click->button-color#changeColor" } do %>
     <i class="bi bi-house icon-navbar middled"></i>
     <span class="text-navbar middled"> Home </span>
   <% end %>
+
+
+<% if current_user && athlete_user %>
+
+
 <% else %>
   <%= link_to root_path, class: "navlink position-relative" do %>
     <i class="bi bi-house icon-navbar middled"></i>

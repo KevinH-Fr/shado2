@@ -28,8 +28,8 @@
   border-radius: 20px;
   display: block;
   text-decoration: none;
-  color: grey;
-  min-width: 200px;
+ /* color: grey;
+*/  min-width: 200px;
 }
 
 .navlink:hover{ 
@@ -142,3 +142,9 @@ border-right: 1px solid rgb(180, 180, 180);
   .profile-pic-gap{
     margin-top: 100px;
   }
+
+
+  .selected-navbar {
+    background-color: #00AFF0;
+  }
+   
