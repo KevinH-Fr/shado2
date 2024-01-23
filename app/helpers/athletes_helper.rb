@@ -7,4 +7,12 @@ module AthletesHelper
             end
         end
     end
+
+    def appartenance_athlete(athlete)
+        # verifier que le current user detient le compte athlete
+
+        if current_user
+            current_user.id == athlete.user.id 
+        end
+    end
 end
