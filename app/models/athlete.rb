@@ -3,6 +3,11 @@ class Athlete < ApplicationRecord
   has_one_attached :profile_pic, dependent: :destroy
   has_one_attached :panorama_pic, dependent: :destroy
 
+  has_many :posts
+  has_many :campaigns
+  has_many :fans, through: :campaigns
+
+
   def default_profile_pic
     if profile_pic.attached?
       profile_pic

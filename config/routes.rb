@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   get 'steps_user/athlete_account'
   get 'steps_user/athlete_campaign'
 
-
   #stripe
   get 'purchase_success', to: 'stripe#purchase_success'
   post 'create-checkout-session', to: 'campaigns#create_checkout_session'
@@ -36,6 +35,7 @@ Rails.application.routes.draw do
   get 'dashboard_athlete/activities'
   get 'dashboard_athlete/revenues'
   get 'dashboard_athlete/monetization'
+  get 'dashboard_athlete/guides'
 
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

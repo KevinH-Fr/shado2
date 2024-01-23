@@ -28,8 +28,8 @@
   border-radius: 20px;
   display: block;
   text-decoration: none;
- /* color: grey;
-*/  min-width: 200px;
+ /* color: grey; */
+  min-width: 200px;
 }
 
 .navlink:hover{ 
@@ -143,8 +143,10 @@ border-right: 1px solid rgb(180, 180, 180);
     margin-top: 100px;
   }
 
-
+  .navlink{
+    color: grey;
+  }
   .selected-navbar {
-    background-color: #00AFF0;
+    color: #00AFF0;
   }
    

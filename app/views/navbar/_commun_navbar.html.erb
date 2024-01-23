@@ -1,43 +1,63 @@
 
-  <%= link_to root_path, class: "navlink position-relative btn-nav", data: { controller: "button-color", action: "click->button-color#changeColor" } do %>
-    <i class="bi bi-house icon-navbar middled"></i>
-    <span class="text-navbar middled"> Home </span>
-  <% end %>
-
-
 <% if current_user && athlete_user %>
 
+  <%= link_to root_path, class: "navlink position-relative
+      #{'selected-navbar' if controller_name == 'pages' && action_name == 'index'}" do %>
+      <i class="bi bi-house icon-navbar middled"></i>
+      <span class="text-navbar middled"> Home </span>
+  <% end %>
 
 <% else %>
-  <%= link_to root_path, class: "navlink position-relative" do %>
-    <i class="bi bi-house icon-navbar middled"></i>
-    <span class="text-navbar middled"> Home </span>
+
+  <%= link_to root_path, class: "navlink position-relative 
+      #{'selected-navbar' if controller_name == 'pages' && action_name == 'index'}" do %>
+      <i class="bi bi-house icon-navbar middled"></i>
+      <span class="text-navbar middled"> Home </span>
   <% end %>
+
+
 <% end %>
 
-<%= link_to athletes_path, class: "navlink position-relative" do %>
-  <i class="bi bi-star icon-navbar middled"></i>
-  <span class="text-navbar middled"> Subs </span>
-<% end %>  
+<%= link_to athletes_path, class: "navlink position-relative 
+    #{'selected-navbar' if controller_name == 'athletes' && action_name == 'index'}" do %>
+    <i class="bi bi-star icon-navbar middled"></i>
+    <span class="text-navbar middled"> Subs </span>
+<% end %>
 
-<%= link_to search_index_path, class: "navlink position-relative" do %>
-  <i class="bi bi-search icon-navbar middled"></i>
-  <span class="text-navbar middled"> Search  </span>
-<% end %>  
 
-<% if current_user %>
-  <%= link_to user_path(current_user.id), class: "navlink position-relative" do %>
-    <i class="bi bi-person icon-navbar middled"></i>
-    <span class="text-navbar middled"> My Profile  </span>
-  <% end %>  
-<% end%>
+<%= link_to search_index_path, class: "navlink position-relative     
+      #{'selected-navbar' if controller_name == 'search'}" do %>
+      <i class="bi bi-search icon-navbar middled"></i>
+      <span class="text-navbar middled"> Search </span>
+<% end %>
 
 <% if athlete_user %>
-  <%= link_to dashboard_athlete_activities_path, class: "navlink position-relative" do %>
-    <i class="bi bi-clipboard2-data icon-navbar middled"></i>
-    <span class="text-navbar middled"> Dashboard  </span>
-  <% end %>  
-  <%= link_to new_post_path, class: "navlink position-relative" do %>
-    <span> New Post </span>
-  <% end %>  
+  <%= link_to athlete_path(Athlete.where(user: current_user.id).first.id), class: "navlink position-relative
+    #{'selected-navbar' if controller_name == 'athletes' && action_name == 'show'}" do %>
+    <i class="bi bi-person icon-navbar middled"></i>
+    <span class="text-navbar middled"> My Profile  </span>
+  <% end %> 
+<% elsif fan_user %>
+  <%= link_to fan_path(Fan.where(user: current_user.id).first.id), class: "navlink position-relative
+    #{'selected-navbar' if controller_name == 'fans' && action_name == 'show'}" do %>
+    <i class="bi bi-person icon-navbar middled"></i>
+    <span class="text-navbar middled"> My Profile  </span>
+  <% end %> 
+<% end %>
+
+<% if athlete_user %>
+
+  <%= link_to dashboard_athlete_activities_path, 
+      class: "navlink position-relative    
+        #{'selected-navbar' if controller_name == 'dashboard_athlete'}" do %>
+        <i class="bi bi-clipboard2-data  icon-navbar middled"></i>
+        <span class="text-navbar middled"> Dashboard </span>
+  <% end %>
+
+  <%= link_to new_post_path, 
+      class: "navlink position-relative   
+        #{'selected-navbar' if controller_name == 'posts' && action_name == 'new'}" do %>
+        <span class="text-navbar middled"> New Post </span>
+  <% end %>
+
 <% end %>
