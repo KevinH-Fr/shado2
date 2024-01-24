@@ -1,5 +1,8 @@
 class CampaignsController < ApplicationController
-  before_action :set_campaign, only: %i[ show edit update destroy create_checkout_session ]
+
+  include FansHelper
+
+  before_action :set_campaign, only: %i[ show edit update destroy create_checkout_session unsubscribe_session ]
 
   # GET /campaigns or /campaigns.json
   def index
@@ -41,6 +44,31 @@ class CampaignsController < ApplicationController
     })
   
     redirect_to session.url, allow_other_host: true, status: 303
+  end
+
+  def unsubscribe_session
+
+
+    subscription_id = fan_user.subscriptions.find_by(campaign: @campaign, status: "paid").stripe_subscription_id # Replace with your actual subscription ID
+        
+    begin
+      stripe_subscription = Stripe::Subscription.retrieve(subscription_id)
+      stripe_subscription.cancel
+      flash[:notice] = "Subscription canceled successfully."
+
+      subscription = Subscription.find_by(stripe_subscription_id: subscription_id)
+      
+      if subscription.present?
+        subscription.update(status: "cancelled")
+      else
+        flash[:alert] = "Error updating subscription status: Subscription not found in the database."
+      end
+
+    rescue Stripe::StripeError => e
+      flash[:alert] = "Error canceling subscription: #{e.message}"
+    end
+    redirect_to root_path # Adjust the redirection path as needed
+
   end
 
 
@@ -119,7 +147,7 @@ class CampaignsController < ApplicationController
         })
       end
     
-      # Save the Stripe product and price IDs in the article
+      # Save the Stripe product and price IDs in the campaign
       campaign.update(stripe_product_id: product.id, stripe_price_id: price.id)
       
     end

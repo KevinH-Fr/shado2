@@ -16,7 +16,7 @@
 
 
  .exclusive-post {
-    filter: blur(5px); /* Adjust the blur intensity as needed */
+    filter: blur(20px); /* Adjust the blur intensity as needed */
   }
 
   /* NAVBAR */ 

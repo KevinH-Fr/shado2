@@ -8,8 +8,14 @@ class StripeController < ApplicationController
 
       subscription_id = @campaign.recurrent ? session.subscription : nil
 
-      Subscription.find_or_create_by(fan: Fan.where(user: current_user.id).first, campaign: @campaign, stripe_product_id: subscription_id ) do |subscription|
-        subscription.status = 'paid'
+      Subscription.find_or_create_by(
+        fan: Fan.where(user: current_user.id).first, 
+        campaign: @campaign, 
+        stripe_product_id: subscription_id,
+        stripe_subscription_id: subscription_id,
+         
+        ) do |subscription|
+          subscription.status = 'paid'
       end
 
     end

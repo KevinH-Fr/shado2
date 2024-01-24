@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'users/:id' => 'users#show', as: 'user'
 
-  
   #steps account
   get 'steps_user/fan_account'
   get 'steps_user/fan_subscribe'
@@ -31,6 +30,7 @@ Rails.application.routes.draw do
   #stripe
   get 'purchase_success', to: 'stripe#purchase_success'
   post 'create-checkout-session', to: 'campaigns#create_checkout_session'
+  post 'unsubscribe-session', to: 'campaigns#unsubscribe_session'
 
 
   # dashboard athlete  
