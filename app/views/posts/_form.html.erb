@@ -11,26 +11,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :athlete_id, style: "display: block" %>
-    <%= form.text_field :athlete_id, value: Athlete.where(user: current_user.id).first.id %>
+  <div class= "m-0 p-0">
+    <%#= form.label :content, style: "display: block" %>
+    <%= form.text_area :content, placeholder: "Compose new post... ", class: "form-control createpostdesign" %>
   </div>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+  <% if post.persisted? %>
+    <%= form.hidden_field :athlete_id %>
+  <% else %>
+    <%= form.hidden_field :athlete_id, value: athlete_user.id %>
+  <% end %>
 
-  <div>
-    <%= form.label :location, style: "display: block" %>
-    <%= form.text_field :location %>
-  </div>
-
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
-  </div>
-    
   <div>
     <span class="fa fa-photo-film btn-main"></span>
     <%= form.file_field :media %>
@@ -38,11 +29,30 @@
 
 
   <div>
-    <%= form.label :exclusif, style: "display: block" %>
+    <%= form.label :exclusif %>
     <%= form.check_box :exclusif %>
   </div>
+  
+<div class="container-fluid text-end m-2 p-2"> 
+  <button type="submit" class="btn btn-primary">
+    <span><i class="bi bi-check"></i> Create!</span>
+  </button>
+</div>
 
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>
+
+<style>
+  .image-upload > input {
+    display: none;
+  }
+  .image-upload > label {
+    cursor:pointer;
+  }
+
+  .video-upload > input {
+    display: none;
+  }
+  .video-upload > label {
+    cursor:pointer;
+  }
+</style>

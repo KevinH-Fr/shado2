@@ -9,10 +9,8 @@ module CampaignsHelper
       concat(content_tag(:p, content_tag(:strong, 'Start:') + campaign.start))
       concat(content_tag(:p, content_tag(:strong, 'End:') + campaign.end))
 
-      concat(content_tag(:p, content_tag(:strong, 'ref product stripe:') + campaign.stripe_product_id))
-      concat(content_tag(:p, content_tag(:strong, 'ref price stripe:') + campaign.stripe_price_id))
-
-
+      #concat(content_tag(:p, content_tag(:strong, 'ref product stripe:') + campaign.stripe_product_id))
+      #concat(content_tag(:p, content_tag(:strong, 'ref price stripe:') + campaign.stripe_price_id))
      # concat(content_tag(:p, content_tag(:strong, 'ref sub current fan:') + fan_user.subscriptions.find_by(campaign: campaign).stripe_subscription_id.to_s))
 
       if user_signed_in?  
