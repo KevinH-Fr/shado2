@@ -22,9 +22,23 @@ class DashboardAthleteController < ApplicationController
   end
 
   def revenues
+    @athlete = Athlete.where(user_id: current_user.id).first
+        
+    @subscriptions = @athlete.campaigns.joins(:subscriptions)
+    
+    @valSubscriptions = @subscriptions.sum(:subscription)
+    
+    @valSubByDate = @subscriptions.group('DATE(subscriptions.created_at)').sum(:subscription)
+    @nbSubByDate = @subscriptions.group('DATE(subscriptions.created_at)').count
+
   end
 
   def monetization
+    @athlete = Athlete.where(user_id: current_user.id).first
+    @campaigns = @athlete.campaigns
+
+    @main_campaign = @athlete.campaigns.where(periodicity: true).first
+    @popup_campaigns = @athlete.campaigns.where(periodicity: false)
   end
 
   def guides

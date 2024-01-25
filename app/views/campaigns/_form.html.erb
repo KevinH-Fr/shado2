@@ -12,56 +12,56 @@
   <% end %>
 
   <div>
-    <%= form.label :athlete_id, style: "display: block" %>
-    <%= form.text_field :athlete_id, value: Athlete.where(user: current_user.id).first.id %>
+    <%#= form.label :athlete_id, style: "display: block" %>
+    <%= form.hidden_field :athlete_id, value: Athlete.where(user: current_user.id).first.id %>
   </div>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+
+  <div class="input-group input-group mb-2">
+    <%= form.label :title, class: "input-group-text label-colored" %>
+    <%= form.text_field :title, class: "form-control input-colored" %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="input-group input-group mb-2">
+    <%= form.label :description, class: "input-group-text label-colored" %>
+    <%= form.text_area :description, class: "form-control input-colored" %>
   </div>
 
-  <div>
-    <%= form.label :periodicity, style: "display: block" %>
-    <%= form.text_field :periodicity %>
+  <div class="input-group input-group mb-2">
+    <%= form.label :periodicity, class: "input-group-text label-colored" %>
+    <%= form.text_field :periodicity, class: "form-control input-colored" %>
   </div>
 
-  <div>
-    <%= form.label :recurrent, style: "display: block" %>
-    <%= form.check_box :recurrent %>
+  <div class="input-group input-group mb-2">
+    <%= form.label :recurrent, class: "input-group-text label-colored" %>
+    <%= form.check_box :recurrent, class: "form-control input-colored" %>
   </div>
 
-  <div>
-    <%= form.label :subscription, style: "display: block" %>
-    <%= form.text_field :subscription %>
+  <div class="input-group input-group mb-2">
+    <%= form.label :subscription, class: "input-group-text label-colored" %>
+    <%= form.text_field :subscription, class: "form-control input-colored" %>
   </div>
 
-  <div>
-    <%= form.label :target, style: "display: block" %>
-    <%= form.text_field :target %>
+  <div class="input-group input-group mb-2">
+    <%= form.label :target, class: "input-group-text label-colored" %>
+    <%= form.text_field :target, class: "form-control input-colored" %>
   </div>
 
-  <div>
-    <%= form.label :start, style: "display: block" %>
-    <%= form.date_field :start %>
+  <div class="input-group input-group mb-2">
+    <%= form.label :start, class: "input-group-text label-colored" %>
+    <%= form.date_field :start, class: "form-control input-colored" %>
   </div>
 
-  <div>
-    <%= form.label :end, style: "display: block" %>
-    <%= form.date_field :end %>
+  <div class="input-group input-group mb-2">
+    <%= form.label :end, class: "input-group-text label-colored" %>
+    <%= form.date_field :end, class: "form-control input-colored" %>
   </div>
 
-  <div>
-    <%= form.label :thankyounote, style: "display: block" %>
-    <%= form.text_area :thankyounote %>
+  <div class="input-group input-group mb-2">
+    <%= form.label :thankyounote, class: "input-group-text label-colored" %>
+    <%= form.text_area :thankyounote, class: "form-control input-colored" %>
   </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+  <%= custom_submit_button("Create campaign") %>
+
 <% end %>
