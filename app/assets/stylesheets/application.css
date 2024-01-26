@@ -149,4 +149,21 @@ border-right: 1px solid rgb(180, 180, 180);
   .selected-navbar {
     color: #00AFF0;
   }
-   
+
+  .selected-dashboard-athlete-navbar {
+    background-color: #053547;
+  }
+
+  .profile-pic, .mini-profile-pic, .medium-profile-pic{
+    object-fit: cover;
+    object-position: center center;
+    background-color: #8a8a8d;
+    border-radius: 100px;
+    border: 2px solid white;
+  }
+  
+  .mini-profile-pic {
+    width: 50px;
+    height: 50px;
+  }
+  

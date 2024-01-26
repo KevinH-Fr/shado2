@@ -1,9 +1,9 @@
-  <%= render "navbar_athlete_dashboard" %>
+<%= render "navbar_athlete_dashboard" %>
 
- <h2 class="my-4">Activities</h2>
+<h2 class="my-4">Activities</h2>
 
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-6 mb-2">
     <div class="card card-with-effect">
       <div class="card-body">
         <h5 class="card-title"> Number of subscribers: <%= @followers.count %> </h5>
@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <div class="col-sm-6">
+  <div class="col-sm-6 mb-2">
     <div class="card card-with-effect">
       <div class="card-body">
         <h5 class="card-title"> Number of posts: <%= @posts.count %> </h5>
@@ -26,15 +26,28 @@
   </div>
 </div>
 
-
-  <h2 class="my-4">Mes followers
+<div class="card mb-2 p-2">
+  <h3 class="my-4">Mes followers
     (nb: <%= @followers.count %>) 
-  </h2>
-  <%= render partial: 'fans/fan', collection: @followers, as: :fan %>
+  </h3>
 
-  <hr>
+  <div class="d-flex flex-wrap align-items-center">
+    <% @followers.each do |follower| %>
 
-posts without media: <%= @posts_without_media.count %> <br>
-posts with image: <%= @posts_with_images.count %> <br>
-posts with video: <%= @posts_with_videos.count %> <br>
+      <%= link_to fan_path(follower) do %>
+        <div class="badge bg-secondary m-1 fs-4">
+          <%= fan_badge(follower) %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
+</div>
+
+<div class="card mb-2 p-2">
+
+  posts without media: <%= @posts_without_media.count %> <br>
+  posts with image: <%= @posts_with_images.count %> <br>
+  posts with video: <%= @posts_with_videos.count %> <br>
+
+</div>

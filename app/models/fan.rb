@@ -7,4 +7,12 @@ class Fan < ApplicationRecord
   has_many :campaigns, through: :subscriptions
   has_many :athletes, through: :campaigns
 
+  def default_profile_pic
+    if profile_pic.attached?
+      profile_pic
+    else
+      'profile_default.png'
+    end
+  end
+  
 end

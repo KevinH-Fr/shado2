@@ -1,12 +1,11 @@
-
 <h1>Dashboard</h1>
 
-  <nav class="navbar bg-light">
-    <form class="container-fluid justify-content-center">
-      <%= link_to "Activities", dashboard_athlete_activities_path, class:"btn btn-primary m-1" %>
-      <%= link_to "Revenues", dashboard_athlete_revenues_path, class:"btn btn-primary m-1" %>
-      <%= link_to "Monetization", dashboard_athlete_monetization_path, class:"btn btn-primary m-1" %>
-      <%= link_to "Guide", dashboard_athlete_guides_path, class:"btn btn-primary m-1" %>
-    </form>
-  </nav>
-<hr>    
+<nav class="navbar bg-light">
+  <form class="container-fluid justify-content-center">
+    <%= dashboard_athlete_link("Activities", dashboard_athlete_activities_path, 'activities') %>
+    <%= dashboard_athlete_link("Revenues", dashboard_athlete_revenues_path, 'revenues') %>
+    <%= dashboard_athlete_link("Monetization", dashboard_athlete_monetization_path, 'monetization') %>
+    <%= dashboard_athlete_link("Guide", dashboard_athlete_guides_path, 'guides') %>
+  </form>
+</nav>
+<hr>

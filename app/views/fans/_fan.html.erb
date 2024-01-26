@@ -1,17 +1,20 @@
-<div id="<%= dom_id fan %>">
-  <p>
-    <strong>User:</strong>
-    <%= fan.user_id %>
-  </p>
 
-  <p>
-    <strong>Pseudo:</strong>
-    <%= fan.pseudo %>
-  </p>
+<div class="card">
 
-  <p>
-    <strong>Bio:</strong>
-    <%= fan.bio %>
-  </p>
+  <%= image_tag(fan.default_profile_pic, class: "card-img-top") %> 
 
+  <div class="card-body">
+    <h5 class="card-title"> <%= fan.pseudo %> </h5>
+    <p class="card-text">
+      <p class=""><strong>Bio:</strong> <%= fan.bio %></p>
+    </p>
+
+    <% if appartenance_fan(fan)  %>
+      <%= link_to edit_fan_path(fan), class: "btn btn-sm btn-secondary" do %>
+        <i class="fa-solid fa-pen-to-square m-1"></i>
+        <span class=""> Edit  </span>
+      <% end %>
+    <% end %>
+    
+  </div>
 </div>

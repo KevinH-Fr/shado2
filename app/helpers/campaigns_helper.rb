@@ -38,4 +38,12 @@ module CampaignsHelper
     end
   end
 
+  def campaign_badge(campaign)
+    span_label = content_tag(:span, campaign.title)
+  
+    combined_content = content_tag(:div, class: "d-flex align-items-center") do
+      concat(span_label)
+    end 
+  end
+
 end

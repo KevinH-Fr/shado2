@@ -28,13 +28,14 @@
   </div>
 
   <div class="input-group input-group mb-2">
-    <%= form.label :periodicity, class: "input-group-text label-colored" %>
-    <%= form.text_field :periodicity, class: "form-control input-colored" %>
+    <%#= form.label :periodicity, class: "input-group-text label-colored" %>
+    <%#= form.text_field :periodicity, class: "form-control input-colored" %>
   </div>
 
-  <div class="input-group input-group mb-2">
-    <%= form.label :recurrent, class: "input-group-text label-colored" %>
-    <%= form.check_box :recurrent, class: "form-control input-colored" %>
+
+  <div class="form-check form-switch">
+    <%= form.label :recurrent, class: "form-check-label" %>
+    <%= form.check_box :recurrent, class: "form-check-input" %>
   </div>
 
   <div class="input-group input-group mb-2">

@@ -1,4 +1,4 @@
-<div id="<%= dom_id campaign %>" class="card p-2">
+<div id="<%= dom_id campaign %>" class="">
   <p>
     <strong>Title:</strong>
     <%= campaign.title %>
@@ -7,11 +7,6 @@
   <p>
     <strong>Description:</strong>
     <%= campaign.description %>
-  </p>
-
-  <p>
-    <strong>Periodicity:</strong>
-    <%= campaign.periodicity %>
   </p>
 
   <p>
@@ -42,7 +37,29 @@
   <div data-turbo='false'>
     <%= form_with url: :create_checkout_session do |f| %>
       <%= f.hidden_field :id, value: campaign.id %>
-      <%= f.submit 'Subscribe', class: "btn btn-success m-1 w-100 fa fa-fade", style: "font-family: Arial, sans-serif;" %>
+      <%= f.submit 'Subscribe', class: "btn btn-success w-100 fa fa-fade", style: "font-family: Arial, sans-serif;" %>
     <% end %>
   </div>
+
+  <% if athlete_user && appartenance_athlete(athlete_user) %>
+    
+    <div class="container-fluid mt-2 d-flex align-items-center justify-content-center">  
+
+      <%= link_to edit_campaign_path(campaign), class: "btn btn-sm btn-secondary mx-1" do %>
+        <i class="fa fa-solid fa-xl fa-pen-to-square"></i>
+        <span>Editer</span>
+      <% end %>
+      
+      <%= button_to campaign, method: :delete, 
+        data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'},
+        class: "btn btn-sm btn-danger mx-1"  do %>
+          <i class="fa-solid fa-trash"></i>
+          <span>Supprimer</span>
+      <% end %>
+
+    </div>
+  
+  <% end %>
+
+
 </div>
