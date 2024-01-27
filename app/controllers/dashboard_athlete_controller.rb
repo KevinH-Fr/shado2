@@ -37,8 +37,6 @@ class DashboardAthleteController < ApplicationController
     @athlete = Athlete.where(user_id: current_user.id).first
     @campaigns = @athlete.campaigns
 
-    @main_campaign = @athlete.campaigns.where(periodicity: true).first
-    @popup_campaigns = @athlete.campaigns.where(periodicity: false)
   end
 
   def guides
