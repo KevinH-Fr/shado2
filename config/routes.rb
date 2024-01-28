@@ -3,9 +3,17 @@ Rails.application.routes.draw do
   resources :subscriptions
   resources :sports
   resources :campaigns
-  resources :posts
   resources :fans
   resources :athletes
+  
+  
+  resources :posts do
+    member do 
+      patch :upvote
+      patch :downvote
+      patch :vote
+    end
+  end
   
   get 'pages/index'
   

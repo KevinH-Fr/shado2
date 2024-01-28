@@ -15,9 +15,12 @@
 
 <div class="d-flex justify-content-between p-2 mx-1">
     <div>
-        <i class="mx-1 fa-regular fa-xl fa-thumbs-up"></i>
-        <span> J'aime </span>
+        <%= button_to vote_post_path(post, type: :upvote), method: :patch, class: "btn-like #{'text-primary' if current_user&.voted_up_on?(post)}" do %>
+            <i class="mx-1 fa-regular fa-xl fa-thumbs-up"></i>
+            <span> J'aime </span>
+        <% end %>
     </div>
+    
     <div>
         <i class="mx-1 fa-regular fa-xl fa-message"></i>
         <span> Commenter </span>
@@ -27,3 +30,5 @@
         <span> Partager </span>
     </div>
 </div>
+
+

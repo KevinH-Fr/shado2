@@ -175,3 +175,25 @@ border-right: 1px solid rgb(180, 180, 180);
     text-decoration: none;
     color: rgb(0, 0, 0);  
   }
+
+    /* BUOTONS */
+  
+    .btn-like{
+      /*  margin: .3em; */
+        font-size: large;
+        text-decoration: none;
+        background-color: white;
+        color: grey;
+        border: none;
+    }
+         
+    .btn-like:hover{ 
+      background-color: #fde5f6;
+      color: #d82938;
+    }
+    
+    .btn-no-style{
+      background-color: white;
+      border-style: none;
+    }
+    

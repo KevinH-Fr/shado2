@@ -77,3 +77,5 @@ gem 'stripe'
 gem 'pagy'
 
 gem 'ransack'
+
+gem 'acts_as_votable'
