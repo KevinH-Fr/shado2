@@ -3,6 +3,9 @@ class Post < ApplicationRecord
 
   has_one_attached :media, dependent: :destroy
 
+  has_many :comments, -> { order(created_at: :desc) }, as: :commentable, dependent: :destroy, inverse_of: :commentable
+
+
   acts_as_votable
 
   def upvote!(user)

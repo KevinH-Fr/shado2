@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between p-2 mx-1">
     <div class="">
         <i class="mx-1 fa fa-regular fa-xl fa-heart"></i>
-        <span> 562 </span>
+        <span> <%= post.cached_votes_up %> </span>
     </div>
     <div class="">
         <span> 2 451 commentaires </span>
@@ -31,4 +31,14 @@
     </div>
 </div>
 
+
+<%# tempo comment %>
+
+  <div class="flex-element-text-start ms-4 mt-1">
+
+      <%= link_to post_path(post), class: "btn-main" do %>
+        <i class= "fa fa-xs fa-solid fa-comment"></i>  
+        <span>  <%= post.comments.count %> </span>       
+      <% end %>
+  </div>
 

@@ -8,12 +8,20 @@ Rails.application.routes.draw do
   
   
   resources :posts do
+    resources :comments, only: %i[new create destroy], module: :posts
+
     member do 
       patch :upvote
       patch :downvote
       patch :vote
     end
   end
+  
+  resources :comments, only: [] do
+    resources :comments, only: %i[new create destroy], module: :comments
+  end
+  get '/comments/:id', to: 'comments#show', as: 'comment'
+  
   
   get 'pages/index'
   

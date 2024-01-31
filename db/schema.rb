@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_27_234829) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_31_173852) do
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -67,6 +77,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_27_234829) do
     t.string "stripe_price_id"
     t.string "status"
     t.index ["athlete_id"], name: "index_campaigns_on_athlete_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.integer "user_id", null: false
+    t.string "commentable_type", null: false
+    t.integer "commentable_id", null: false
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "fans", force: :cascade do |t|
@@ -149,6 +171,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_27_234829) do
   add_foreign_key "athletes", "sports"
   add_foreign_key "athletes", "users"
   add_foreign_key "campaigns", "athletes"
+  add_foreign_key "comments", "users"
   add_foreign_key "fans", "users"
   add_foreign_key "posts", "athletes"
   add_foreign_key "subscriptions", "campaigns"

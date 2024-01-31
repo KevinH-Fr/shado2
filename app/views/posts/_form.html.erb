@@ -22,16 +22,17 @@
     <%= form.hidden_field :athlete_id, value: athlete_user.id %>
   <% end %>
 
-  <div>
+  <div class="my-2">
     <span class="fa fa-photo-film btn-main"></span>
     <%= form.file_field :media %>
   </div>
 
 
-  <div>
-    <%= form.label :exclusif %>
-    <%= form.check_box :exclusif %>
+  <div class="form-check form-switch">
+    <%= form.label :exclusif, class: "form-check-label" %>
+    <%= form.check_box :exclusif, class: "form-check-input" %>
   </div>
+
   
 <div class="container-fluid text-end m-2 p-2"> 
   <button type="submit" class="btn btn-primary">
