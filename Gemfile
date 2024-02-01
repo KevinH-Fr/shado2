@@ -79,3 +79,5 @@ gem 'pagy'
 gem 'ransack'
 
 gem 'acts_as_votable'
+
+gem "noticed", "~> 1.6"

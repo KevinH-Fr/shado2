@@ -1,26 +1,29 @@
-<%= render "navbar_athlete_dashboard" %>
 
-<h2 class="my-4">Monetization</h2>
- 
-    <div class="card card-with-effect">
-      <div class="card-body">
-        <h5 class="card-title"> My campaigns <%= @campaigns.count %>  </h5>
-        <p class="card-text">
+<div class="p-4">
+  <%= render "navbar_athlete_dashboard" %>
 
-          <div class="d-flex flex-wrap align-items-center">
-            <% @campaigns.each do |campaign| %>
-
-              <%= link_to campaign_path(campaign) do %>
-                <div class="badge bg-secondary m-1 fs-4">
-                  <%= campaign_badge(campaign) %>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-        
-          <%= link_to "New campaign", new_campaign_path, class: "btn btn-success my-2" %>
-        </p>
-      </div>
-    </div>
+  <h2 class="my-4">Monetization</h2>
   
+      <div class="card card-with-effect">
+        <div class="card-body">
+          <h5 class="card-title"> My campaigns <%= @campaigns.count %>  </h5>
+          <p class="card-text">
+
+            <div class="d-flex flex-wrap align-items-center">
+              <% @campaigns.each do |campaign| %>
+
+                <%= link_to campaign_path(campaign) do %>
+                  <div class="badge bg-secondary m-1 fs-6">
+                    <%= campaign_badge(campaign) %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          
+            <%= link_to "New campaign", new_campaign_path, class: "btn btn-success my-2" %>
+          </p>
+        </div>
+      </div>
+    
+
 </div>

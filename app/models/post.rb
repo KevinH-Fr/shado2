@@ -6,6 +6,14 @@ class Post < ApplicationRecord
   has_many :comments, -> { order(created_at: :desc) }, as: :commentable, dependent: :destroy, inverse_of: :commentable
 
 
+  after_create_commit :notify_recipient 
+  before_destroy :cleanup_notifications
+  has_noticed_notifications model_name: 'Notification'
+
+  has_many :notifications, dependent: :destroy
+
+
+
   acts_as_votable
 
   def upvote!(user)
@@ -30,5 +38,23 @@ class Post < ApplicationRecord
       downvote_by user
     end
   end
+
+
+  private 
+  
+  def notify_recipient
+
+    recipient = User.last
+    #puts "----------------- recipients: #{recipient.ids} -------------------------"
+
+    PostNotification.with(post: self)
+      .deliver_later(recipient)
+  end
+
+  def cleanup_notifications 
+    notifications_as_comment.destroy_all
+  end
+
+
 
 end

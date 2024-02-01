@@ -1,20 +1,6 @@
 
-<%= render @campaign %>
-
-
-<div class="container-fluid mt-4 d-flex align-items-center justify-content-center">  
-
-  <%= link_to edit_campaign_path(@campaign), class: "btn btn-sm btn-secondary mx-1" do %>
-    <i class="fa fa-solid fa-xl fa-pen-to-square"></i>
-    <span>Editer</span>
-  <% end %>
-  
-  <%= button_to @campaign, method: :delete, 
-    data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'},
-    class: "btn btn-sm btn-danger mx-1"  do %>
-      <i class="fa-solid fa-trash"></i>
-      <span>Supprimer</span>
-  <% end %>
-
+<div class="p-2">
+  <%= render @campaign %>
 </div>
+
 
