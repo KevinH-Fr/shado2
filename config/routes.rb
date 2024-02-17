@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'messages/index'
 
   resources :subscriptions
   resources :sports
@@ -51,6 +52,8 @@ Rails.application.routes.draw do
 
 
   # dashboard athlete  
+  get 'dashboard_athlete/index'
+
   get 'dashboard_athlete/activities'
   get 'dashboard_athlete/revenues'
   get 'dashboard_athlete/monetization'

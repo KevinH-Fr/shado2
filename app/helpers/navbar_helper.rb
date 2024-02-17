@@ -4,6 +4,8 @@ module NavbarHelper
             "Let's Shado!"
         elsif  controller == 'pages' && action == 'discover' 
             "Discover"
+        elsif  controller == 'dashboard_athlete' 
+            "Dashboard"
         end
     end 
 end

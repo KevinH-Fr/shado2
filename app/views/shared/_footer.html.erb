@@ -1,27 +1,19 @@
 
 <div class="d-flex justify-content-evenly text-dark p-2">   
     <% if current_user.present? %>
-        <%#= button_to "", destroy_user_session_path, method: :delete, 
-            data: {turbo: "false"},
-            class: "fa-solid fa-right-from-bracket btn btn-danger me-2"  %>
-        <%#= current_user.email %>
-
-        <%#= link_to root_path, class: "btn btn-link  
-            #{' orange-colored' if controller_name == 'pages' && action_name == 'index'}" do %>
-            <!--i class="fa fa-home"></i>
-            <div class="">Let's Shado!</div-->
-        <%# end %>
 
         <%= active_link_colored(root_path, "Let's Shado!", "home", 'pages', 'index') %>
 
         <%# adapter propremenr pour type user %>
         <% if athlete_user %>   
-            <%= active_link_colored(athletes_path, "Profile", "user", 'athletes', 'index') %>
-            <%= active_link_colored(dashboard_athlete_activities_path, "Dashboard", "dashboard", 'dashboard_athlete', nil) %>
+            <%= active_link_colored(athlete_path(athlete_user), "Profile", "user", 'athletes', 'show') %>
+            <%= active_link_colored(dashboard_athlete_index_path, "Dashboard", "dashboard", 'dashboard_athlete', nil) %>
+        
+        <% elsif fan_user %>
+            <%= active_link_colored(fan_path(fan_user), "Profile", "user", 'fans', 'show') %>
         <% end %>
 
-        
-        <%= active_link_colored(root_path, "Chat", "message", 'messages', 'index') %>
+        <%= active_link_colored(messages_index_path, "Chat", "message", 'messages', 'index') %>
 
     <% else %>
     

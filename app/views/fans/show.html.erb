@@ -1,2 +1,7 @@
 
 <%= render @fan %>
+
+
+<%= button_to "", destroy_user_session_path, method: :delete, 
+        data: {turbo: "false"},
+        class: "fa-solid fa-right-from-bracket btn btn-danger me-2"  %>
