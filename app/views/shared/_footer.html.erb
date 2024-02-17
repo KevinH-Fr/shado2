@@ -6,25 +6,23 @@
             class: "fa-solid fa-right-from-bracket btn btn-danger me-2"  %>
         <%#= current_user.email %>
 
-        <%= link_to root_path, class: "btn btn-link" do %>
-            <i class="fas fa-home orange-colored"></i>
-            <div class="orange-colored">Let's Shado!</div>
+        <%#= link_to root_path, class: "btn btn-link  
+            #{' orange-colored' if controller_name == 'pages' && action_name == 'index'}" do %>
+            <!--i class="fa fa-home"></i>
+            <div class="">Let's Shado!</div-->
+        <%# end %>
+
+        <%= active_link_colored(root_path, "Let's Shado!", "home", 'pages', 'index') %>
+
+        <%# adapter propremenr pour type user %>
+        <% if athlete_user %>   
+            <%= active_link_colored(athletes_path, "Profile", "user", 'athletes', 'index') %>
+            <%= active_link_colored(dashboard_athlete_activities_path, "Dashboard", "dashboard", 'dashboard_athlete', nil) %>
         <% end %>
 
-        <%= link_to user_path(current_user), class: "btn btn-link" do %>
-            <i class="fas fa-user orange-colored"></i>
-            <div class="orange-colored">Profile</div>
-        <% end %>
-
-        <%= link_to root_path, class: "btn btn-link" do %>
-            <i class="fas fa-dashboard orange-colored"></i>
-            <div class="orange-colored">Dashboard</div>
-        <% end %>
         
-        <%= link_to root_path, class: "btn btn-link" do %>
-            <i class="fas fa-message orange-colored"></i>
-            <div class="orange-colored">Chat</div>
-        <% end %>   
+        <%= active_link_colored(root_path, "Chat", "message", 'messages', 'index') %>
+
     <% else %>
     
         <%= link_to '', new_user_session_path, class: "fa-solid fa-user-lock btn btn-warning mx-2" %>
