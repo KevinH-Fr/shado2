@@ -1,0 +1,22 @@
+<%# posts infinite scroll pagination %>
+<%= turbo_stream.append :athletes do %>
+  <div class="container-fluid d-flex justify-content-center my-3">
+    <div class="row row-cols-2 g-3">
+      <% @athletes.each do |athlete| %>
+        <div class="col">
+          <%= link_to athlete_path(athlete), class: "no-underline" do %>
+            <%= render partial: 'athletes/athlete_mini', locals: { athlete: athlete } %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+<%= turbo_stream.replace :pagination do %>
+    <% if @pagy&.next.present? %>
+        <%= turbo_frame_tag :pagination, loading: :lazy, 
+            src: pages_discover_path(format: :turbo_stream, page: @pagy.next) %>
+    <% end %>
+<% end %>

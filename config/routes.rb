@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   
   
   get 'pages/index'
-  
+  get 'pages/discover'
+
   get 'search/index'
 
   #devise_for :users

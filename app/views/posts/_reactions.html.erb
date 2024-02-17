@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-between p-2 mx-1">
+<!--div class="d-flex justify-content-between p-2 mx-1">
     <div class="">
         <i class="mx-1 fa fa-regular fa-xl fa-heart"></i>
         <span> <%= post.cached_votes_up %> </span>
@@ -11,29 +11,30 @@
     <div class="">
         <span> 224 partages </span>
     </div>
-</div>
+</div-->
 
-<hr class="m-0 p-0">
 
-<div class="d-flex justify-content-between p-2 mx-1">
+<div class="d-flex justify-content-start p-2">
   <div>
-    <%= button_to vote_post_path(post, type: :upvote), method: :patch, class: "btn-like #{'text-primary' if current_user&.voted_up_on?(post)}" do %>
-      <i class="mx-1 fa-regular fa-xl fa-thumbs-up"></i>
-      <span> J'aime </span>
+    <%= button_to vote_post_path(post, type: :upvote), method: :patch, class: "btn light-bg-orange-colored px-4 mx-2 #{'text-primary' if current_user&.voted_up_on?(post)}" do %>
+      <i class="mx-1 fa-regular fa-xl fa-heart orange-colored"></i>
     <% end %>
   </div>
   
   <div>
-    <%= link_to post_path(post), class: "no-underline fw-bold" do %>
-        <i class="mx-1 fa-regular fa-xl fa-comment"></i>
-        <span> Commenter </span>
+    <%= link_to post_path(post), class: "no-underline fw-bold btn light-bg-orange-colored px-4 mx-2" do %>
+        <i class="mx-1 fa-regular fa-xl fa-comment orange-colored"></i>
     <% end %>
 
   </div>
 
   <div>
-    <i class="mx-1 fa fa-xl fa-share-from-square"></i>
-    <span> Partager </span>
+      <%= link_to root_path, class: "no-underline fw-bold btn light-bg-orange-colored px-4 mx-2" do %>
+        <i class="mx-1 fa fa-xl fa-share-from-square orange-colored"></i>
+    <% end %>
   </div>
 </div>
 
+
+
+      <hr>

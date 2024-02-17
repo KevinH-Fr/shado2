@@ -1,0 +1,5 @@
+<div class=""> 
+    <%=link_to image_tag(athlete.default_profile_pic, class: "img-fluid athlete-discover-img rounded text-center"), athlete_path(athlete) %> 
+    <h4 class=""><%= link_to athlete.name, athlete_path(athlete),class:"no-underline" %></h4>
+    <div class=""> <%= Sport.find(athlete.sport_id).name if athlete.sport_id.present?  %></div>
+</div>

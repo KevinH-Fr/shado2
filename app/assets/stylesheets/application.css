@@ -21,6 +21,13 @@
 
   /* NAVBAR */ 
 
+  button.navbar-toggler {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+
+  
 .navlink{
   margin: .3em;
   padding: .4em;
@@ -46,6 +53,24 @@ color: #00AFF0;
 background-color: #00AFF0;
 }
 
+.orange-bg-colored{
+  background-color: rgb(233, 141, 80);
+}
+
+.orange-colored{
+  color: rgb(233, 141, 80);
+}
+
+.light-bg-orange-colored{
+  background-color: rgb(249, 242, 234);
+}
+
+
+.selected-feed{
+  background-color: rgb(233, 141, 80);
+  color: white;
+
+}
 
 .right-bordered{
 border-right: 1px solid rgb(180, 180, 180);
@@ -197,3 +222,10 @@ border-right: 1px solid rgb(180, 180, 180);
       border-style: none;
     }
     
+
+    .athlete-discover-img {
+      height: 160px; /* Set your desired height */
+      /* You can adjust the value as needed */
+      object-fit: cover; /* This ensures the image maintains its aspect ratio */
+      
+    }
