@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_01_145051) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_18_012443) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -91,6 +91,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_145051) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "fans", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "pseudo"
@@ -98,6 +105,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_145051) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_fans_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.integer "conversations_id"
+    t.integer "users_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "conversation_id", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["conversations_id"], name: "index_messages_on_conversations_id"
+    t.index ["users_id"], name: "index_messages_on_users_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -185,6 +204,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_145051) do
   add_foreign_key "campaigns", "athletes"
   add_foreign_key "comments", "users"
   add_foreign_key "fans", "users"
+  add_foreign_key "messages", "conversations"
   add_foreign_key "posts", "athletes"
   add_foreign_key "subscriptions", "campaigns"
   add_foreign_key "subscriptions", "fans"

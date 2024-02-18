@@ -1,10 +1,12 @@
 <%#= render "navbar_athlete_dashboard" %>
 
-<h2> My shadoers </h2>
+<div class="my-2">
+  <h2> My shadoers </h2>
+</div>
 
 <div class="horizontal-scroll-container my-2 pb-4">
   <% @fans.each do |fan| %>
-    <%= image_tag(fan.default_profile_pic, width: 90) %>
+    <%= link_to image_tag(fan.default_profile_pic, width: 90), fan_path(fan) %>
   <% end %>
 </div>
 
@@ -12,13 +14,13 @@
 <div class="container-fluid orange-bg-colored p-2">
   <div class="row p-2">
     <div class="col-6">
-      <div class="card p-1">
+      <div class="card p-2">
         Your total <br>
        <span class="fw-bold"> <%= number_to_currency(@valSubByDate.values.sum) %> </span>
       </div>
     </div>
     <div class="col-6">
-      <div class="card p-1">
+      <div class="card p-2">
         Monthly average <br>
        <span class="fw-bold"> <%= number_to_currency(@valSubCurrentMonth.values.sum) %> </span>
       </div>
@@ -26,13 +28,13 @@
   </div>
   <div class="row p-2">
     <div class="col-6">
-      <div class="card p-1">
+      <div class="card p-2">
         Current month
         <span class="fw-bold"><%= Time.now.strftime('%B') %></span>
       </div>
     </div>
     <div class="col-6">
-      <div class="card p-1">
+      <div class="card p-2">
         <%= "#{@athlete.campaigns.count} #{'campaign'.pluralize(@athlete.campaigns.count)}" %>
         <span class="fw-bold"><%= truncate(@athlete.campaigns.first.title, length: 20) %></span>
       </div>
