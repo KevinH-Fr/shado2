@@ -13,7 +13,7 @@
             <%= active_link_colored(fan_path(fan_user), "Profile", "user", 'fans', 'show') %>
         <% end %>
 
-        <%= active_link_colored(messages_index_path, "Chat", "message", 'messages', 'index') %>
+        <%= active_link_colored(rooms_path, "Chat", "message", 'messages', 'index') %>
 
     <% else %>
     
@@ -21,3 +21,8 @@
         <%= link_to '', new_user_registration_path, class: "fa-solid fa-user-plus btn btn-primary" %>
     <% end %>  
 </div>
+
+
+<%#= button_to "", destroy_user_session_path, method: :delete, 
+        data: {turbo: "false"},
+        class: "fa-solid fa-right-from-bracket btn btn-danger me-2"  %>

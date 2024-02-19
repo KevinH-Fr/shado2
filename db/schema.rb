@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_18_012443) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_19_113819) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -91,13 +91,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_18_012443) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "conversations", force: :cascade do |t|
-    t.integer "sender_id"
-    t.integer "recipient_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "fans", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "pseudo"
@@ -108,15 +101,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_18_012443) do
   end
 
   create_table "messages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
     t.text "body"
-    t.integer "conversations_id"
-    t.integer "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "conversation_id", null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
-    t.index ["conversations_id"], name: "index_messages_on_conversations_id"
-    t.index ["users_id"], name: "index_messages_on_users_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -129,6 +120,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_18_012443) do
     t.datetime "updated_at", null: false
     t.index ["read_at"], name: "index_notifications_on_read_at"
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_participants_on_room_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -147,6 +147,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_18_012443) do
     t.integer "cached_weighted_total", default: 0
     t.float "cached_weighted_average", default: 0.0
     t.index ["athlete_id"], name: "index_posts_on_athlete_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_private", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sports", force: :cascade do |t|
@@ -204,7 +211,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_18_012443) do
   add_foreign_key "campaigns", "athletes"
   add_foreign_key "comments", "users"
   add_foreign_key "fans", "users"
-  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "participants", "rooms"
+  add_foreign_key "participants", "users"
   add_foreign_key "posts", "athletes"
   add_foreign_key "subscriptions", "campaigns"
   add_foreign_key "subscriptions", "fans"

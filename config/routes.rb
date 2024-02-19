@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :messages
-  resources :conversations
-  get 'messages/index'
 
   resources :subscriptions
   resources :sports
@@ -10,6 +7,17 @@ Rails.application.routes.draw do
   resources :athletes
   
   
+  resources :rooms do
+    resources :messages
+  end
+  
+  devise_scope :user do 
+    get 'users', to: 'devise/session#new'
+  end
+
+
+
+
   resources :posts do
     resources :comments, only: %i[new create destroy], module: :posts
 
@@ -19,6 +27,8 @@ Rails.application.routes.draw do
       patch :vote
     end
   end
+
+  
   
   resources :comments, only: [] do
     resources :comments, only: %i[new create destroy], module: :comments
