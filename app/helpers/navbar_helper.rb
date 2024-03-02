@@ -6,7 +6,7 @@ module NavbarHelper
             "Discover"
         elsif  controller == 'dashboard_athlete' 
             "Dashboard"
-        elsif  controller == 'messages' 
+        elsif  controller == 'rooms' 
             "Chat"
         end
     end 

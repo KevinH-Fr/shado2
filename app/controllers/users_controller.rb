@@ -12,6 +12,7 @@ class UsersController < ApplicationController
       @messages = @single_room.messages.order(created_at: :asc)
       render 'rooms/index'
     end
+    
   
     private
   
