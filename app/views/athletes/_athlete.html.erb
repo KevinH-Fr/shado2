@@ -10,26 +10,41 @@
     </div>
     <div class="pt-5 profile-card-text px-4">
       <h4 class=""><%= link_to athlete.name, athlete_path(athlete),class:"no-underline" %></h4>
-      <p class=""><strong>Sport:</strong> <%= Sport.find(athlete.sport_id).name if athlete.sport_id.present?  %></p>
-      <p class=""><strong>Bio:</strong> <%= athlete.bio %></p>
+      <p class=""> <%= Sport.find(athlete.sport_id).name if athlete.sport_id.present?  %></p>
 
-      <% if appartenance_athlete(athlete)  %>
-        <%= link_to edit_athlete_path(athlete), class: "btn btn-sm btn-secondary" do %>
-          <i class="fa-solid fa-pen-to-square m-1"></i>
+      <%# if appartenance_athlete(athlete)  %>
+        <%#= link_to edit_athlete_path(athlete), class: "btn btn-sm btn-secondary" do %>
+          <!--i class="fa-solid fa-pen-to-square m-1"></i>
           <span class=""> Edit  </span>
-        <% end %>
+        <%# end %>
 
-        <%= link_to new_campaign_path(), class: "btn btn-sm btn-success" do %>
+        <%#= link_to new_campaign_path(), class: "btn btn-sm btn-success" do %>
           <i class="fa-solid fa-money-bill-wave m-1"></i>
-          <span class=""> New campaign  </span>
-        <% end %>
+          <span class=""> New campaign  </span-->
+        <%# end %>
 
-      <% end %>
+      <%# end %>
 
     </div>
         
   </div>
+
+  <p class="text-center"><%= athlete.bio %></p>
+
+
+  <% if athlete.campaigns.first %>
+  <%# changer pour mapper main campaign %>
+    <div data-turbo='false'>
+      <%= form_with url: :create_checkout_session do |f| %>
+        <%= f.hidden_field :id, value: athlete.campaigns.first.id %>
+        <%= f.submit 'Subscribe', class: "btn w-100 fa orange-bg-colored text-light", style: "font-family: Arial, sans-serif;" %>
+      <% end %>
+    </div>  
+
+  <% end %>
+
 </div>
+
 
 <div>
   
