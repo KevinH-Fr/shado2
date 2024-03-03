@@ -4,9 +4,15 @@ Rails.application.routes.draw do
   resources :sports
   resources :campaigns
   resources :fans
-  resources :athletes
-  
-  
+
+
+
+  resources :athletes do
+    collection do
+      post 'display_media_type'
+    end
+  end
+
   resources :rooms do
     resources :messages
     

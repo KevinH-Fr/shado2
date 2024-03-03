@@ -63,6 +63,12 @@
     <%= form.text_area :thankyounote, class: "form-control input-colored" %>
   </div>
 
+  <div class="input-group input-group mb-2">
+    <%= form.label :panorama_pic, class: "input-group-text label-colored" %>
+    <%= form.file_field :panorama_pic, accept: "image/jpeg, image/png", class: "form-control input-colored" %>
+  </div>
+
+
   <%= custom_submit_button("Create campaign") %>
 
 <% end %>

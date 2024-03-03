@@ -10,6 +10,24 @@ class AthletesController < ApplicationController
   def show
   end
 
+  def display_media_type
+    puts "_______________ action display media type _______________________ "
+    @media = params[:media]
+
+    respond_to do |format|
+      format.turbo_stream do
+        if @media == "images"
+          partial = 'media_images'
+        elsif @media == "videos"
+          partial = 'media_videos'
+        end 
+        render turbo_stream: turbo_stream.update(
+          'partial-container', partial: 'athletes/' + partial
+        )
+      end
+    end
+  end
+
   # GET /athletes/new
   def new
     @athlete = Athlete.new

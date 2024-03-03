@@ -28,11 +28,19 @@
     <%= form_with url: :create_checkout_session do |f| %>
       <%= f.hidden_field :id, value: campaign.id %>
 
-          <div class="container-fluid m-0 p-0 text-end">
-            <%= button_tag(type: "submit", class: "btn w-100 orange-bg-colored text-light fw-bold") do %>
-              <i class="fa fa-regular fa-heart mx-1"></i>
-              <span class="fw-bold">Donate now</span>
-            <% end %>
+          <div class="container-fluid d-flex p-0">
+
+                <%= button_tag(type: "submit", class: "btn w-100 orange-bg-colored text-light fw-bold mx-1") do %>
+                  <i class="fa fa-regular fa-heart mx-1"></i>
+                  <span class="fw-bold">Donate now</span>
+                <% end %>            
+
+                <% if athlete_user && appartenance_athlete(athlete_user) %>
+                    <%= link_to edit_campaign_path(campaign), class: "btn btn-outline-secondary" do %>
+                      <i class="fa fa-solid fa-pen-to-square"></i>
+                    <% end %>
+                <% end %>
+              
           </div>
     <% end %>
   </div>
