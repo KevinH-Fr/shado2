@@ -2,7 +2,7 @@
 <div class="d-flex justify-content-evenly text-dark p-2">   
     <% if current_user.present? %>
 
-        <%= active_link_colored(root_path, "Let's Shado!", "home", 'pages', 'index') %>
+        <%= active_link_colored(root_path, "Let's Shado!", "home", 'pages', nil) %>
 
         <%# adapter propremenr pour type user %>
         <% if athlete_user %>   
@@ -13,7 +13,7 @@
             <%= active_link_colored(fan_path(fan_user), "Profile", "user", 'fans', 'show') %>
         <% end %>
 
-        <%= active_link_colored(rooms_path, "Chat", "message", 'messages', 'index') %>
+        <%= active_link_colored(rooms_path, "Chat", "message", 'rooms', 'index') %>
 
     <% else %>
     

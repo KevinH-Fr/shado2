@@ -32,9 +32,7 @@ module UserHelper
     content_tag(:div, class: 'card mb-2 d-flex flex-row justify-content-between align-items-center p-2') do
       concat image_tag(profilepic, class: 'mini-profile-pic me-2', alt: 'user picture')
           concat content_tag(:h5, name, class: '')
-          concat content_tag(:span, "Email: #{user.email}", class: 'mx-1')
-          concat content_tag(:span, "Role: #{role}", class: '')
-      concat link_to('Start chat', user_path(user), class: 'btn btn-primary ms-auto')
+      concat link_to('', user_path(user), class: 'btn btn-primary fa fa-arrow-right ms-auto')
     end
     
 

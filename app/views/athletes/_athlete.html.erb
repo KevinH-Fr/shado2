@@ -9,39 +9,61 @@
       <%=link_to image_tag(athlete.default_profile_pic, class: "profile-pic"), athlete_path(athlete) %> 
     </div>
     <div class="pt-5 profile-card-text px-4">
-      <h4 class=""><%= link_to athlete.name, athlete_path(athlete),class:"no-underline" %></h4>
-      <p class=""> <%= Sport.find(athlete.sport_id).name if athlete.sport_id.present?  %></p>
+      <h4 class="fs-1 fw-bold"><%= link_to athlete.name, athlete_path(athlete),class:"no-underline" %></h4>
+      <div class=""> <%= Sport.find(athlete.sport_id).name if athlete.sport_id.present?  %></div>
+      <div class="m-0 p-0">
+        <% if appartenance_athlete(athlete)  %>
+          <%= link_to edit_athlete_path(athlete), class: "btn m-0 p-0" do %>
+            <i class="fa-solid fa-xl text-secondary fa-pen-to-square m-1"></i>
+          <% end %>
+        <% end %>
+      </div>
 
-      <%# if appartenance_athlete(athlete)  %>
-        <%#= link_to edit_athlete_path(athlete), class: "btn btn-sm btn-secondary" do %>
-          <!--i class="fa-solid fa-pen-to-square m-1"></i>
-          <span class=""> Edit  </span>
-        <%# end %>
 
         <%#= link_to new_campaign_path(), class: "btn btn-sm btn-success" do %>
-          <i class="fa-solid fa-money-bill-wave m-1"></i>
+          <!--i class="fa-solid fa-money-bill-wave m-1"></i>
           <span class=""> New campaign  </span-->
         <%# end %>
 
-      <%# end %>
 
     </div>
         
   </div>
 
+
+  <div class="p-2">
+
+    <% if athlete.campaigns.first %>
+    <%# changer pour mapper main campaign %>
+      <div data-turbo='false' class="mt-4">
+        <%= form_with url: :create_checkout_session do |f| %>
+          <%= f.hidden_field :id, value: athlete.campaigns.first.id %>
+          <%#= f.submit 'Subscribe', class: "btn w-100 fa orange-bg-colored text-light" %>
+
+          <div class="container-fluid m-0 p-0 text-end">
+            <%= button_tag(type: "submit", class: "btn w-100 orange-bg-colored text-light fw-bold") do %>
+              <i class="fa-solid fa-plus mx-1"></i>
+              <span class="fw-bold">Subscribe</span>
+            <% end %>
+          </div>
+
+
+        <% end %>
+      </div>  
+
+    <% end %>
+
+    <%= link_to root_path, class: "btn w-100 btn-outline-secondary text-dark mt-1 mb-4" do %>
+      <i class="fa fa-rocket mx-1"></i>
+      <span class="fw-bold"> My objectives </span>
+    
+    <% end %>
+    
+  </div>
+
+
   <p class="text-center"><%= athlete.bio %></p>
 
-
-  <% if athlete.campaigns.first %>
-  <%# changer pour mapper main campaign %>
-    <div data-turbo='false'>
-      <%= form_with url: :create_checkout_session do |f| %>
-        <%= f.hidden_field :id, value: athlete.campaigns.first.id %>
-        <%= f.submit 'Subscribe', class: "btn w-100 fa orange-bg-colored text-light", style: "font-family: Arial, sans-serif;" %>
-      <% end %>
-    </div>  
-
-  <% end %>
 
 </div>
 

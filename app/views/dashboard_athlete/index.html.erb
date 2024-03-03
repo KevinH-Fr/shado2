@@ -1,12 +1,12 @@
 <%#= render "navbar_athlete_dashboard" %>
 
 <div class="my-2">
-  <h2> My shadoers </h2>
+  <strong> My shadoers </strong>
 </div>
 
 <div class="horizontal-scroll-container my-2 pb-4">
   <% @fans.each do |fan| %>
-    <%= link_to image_tag(fan.default_profile_pic, width: 90), fan_path(fan) %>
+    <%= link_to image_tag(fan.default_profile_pic, width: 90, class: 'rounded-circle'), fan_path(fan) %>
   <% end %>
 </div>
 
