@@ -5,14 +5,24 @@
   <%= render 'athletes/media_images' %>
 </div>
 
+
 <% if appartenance_athlete(@athlete)  %>
-   <%= link_to  new_campaign_path, class: "btn w-100 orange-bg-colored text-light my-2" do %>
-     <i class="fa fa-plus"></i>
-     <span class="fw-bold"> create campaign </span> 
-   <% end %>
+
+  <%= link_to "#", class: "btn orange-bg-colored text-light mt-4 w-100 mx-2", type: "button", 
+        data: { bs_toggle: "offcanvas", bs_target: "#offcanvasBottom", bs_controls: "offcanvasBottom" } do %>
+    <i class="fa fa-plus"></i>
+    <span class="fw-bold"> create campaign </span> 
+  <% end %>
+
+  <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasBottomLabel">New campaign </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body small">
+      <%= render partial: "campaigns/form", locals: { campaign: Campaign.new, athlete: @athlete } %>
+    </div>
+  </div>
+
 <% end %>
 
-<br> 
-<%= button_to "", destroy_user_session_path, method: :delete, 
-        data: {turbo: "false"},
-        class: "fa-solid fa-right-from-bracket btn btn-danger me-2"  %>
