@@ -24,6 +24,14 @@ class Athlete < ApplicationRecord
     end
   end
 
+  def posts_with_images
+    posts.select { |post| post.media.attached? && post.media.content_type.start_with?('image') }
+  end
+
+  def posts_with_videos
+    posts.select { |post| post.media.attached? && post.media.content_type.start_with?('video') }
+  end
+
   def self.ransackable_attributes(auth_object = nil)
     ["bio", "created_at", "sport_id", "id", "name", "updated_at", "user_id"]
   end

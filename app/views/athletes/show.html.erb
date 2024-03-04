@@ -1,47 +1,8 @@
 <%= render @athlete %>
 
-<div class="container text-center p-2">
-
-  <div class= "btn w-100 text-secondary my-2">
-    <i class="fa fa-image mx-1"></i>
-    <span> images </span> 
-    <i class="fa fa-video ms-3 me-1"></i>
-    <span> videos </span> 
-  </div>
-
-<%# afficher les posts images et videos de l'athlete
-
-   to do 
-
-    reprendre pour avoir fonction qui selectionne image ou videos ok 
-    repartir images et videos dans les deux partials 
-    mettre en form le button en fonction de ce qui est actif 
-    selectionner images au début 
- %>
-
-
-  <%= button_to "images", display_media_type_athletes_path(media: "images"), class: "btn btn-success" %> 
-  <%= button_to "videos", display_media_type_athletes_path(media: "videos"), class: "btn btn-success" %> 
-
-
 <div id="partial-container" class="partial-topic">
   <%# recoit le turbo stream avec elements cliqués %>
-  <%= @media %>
-
-</div>
-
-  <div class="card">
-    <div class="row">
-      <% @athlete.posts.each do |post| %>
-        <div class="col-4"> 
-          <%= link_to post_path(post) do %>
-            <%= image_tag post.media, class: "rounded w-100 mb-2" %>
-          <% end %>        
-        </div>
-      <% end %>
-    </div>
-  </div>
-
+  <%= render 'athletes/media_images' %>
 </div>
 
 <% if appartenance_athlete(@athlete)  %>
@@ -51,8 +12,7 @@
    <% end %>
 <% end %>
 
-<hr>
-
+<br> 
 <%= button_to "", destroy_user_session_path, method: :delete, 
         data: {turbo: "false"},
         class: "fa-solid fa-right-from-bracket btn btn-danger me-2"  %>

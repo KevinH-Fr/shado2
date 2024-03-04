@@ -8,11 +8,16 @@ class AthletesController < ApplicationController
 
   # GET /athletes/1 or /athletes/1.json
   def show
+    @image_posts = @athlete.posts_with_images
+
   end
 
   def display_media_type
-    puts "_______________ action display media type _______________________ "
     @media = params[:media]
+
+    @athlete = Athlete.find(params[:athlete])
+    @image_posts = @athlete.posts_with_images
+    @video_posts = @athlete.posts_with_videos
 
     respond_to do |format|
       format.turbo_stream do
