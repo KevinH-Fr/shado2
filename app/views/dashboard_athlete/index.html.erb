@@ -1,68 +1,73 @@
 <%#= render "navbar_athlete_dashboard" %>
 
-<div class="my-2">
-  <strong> My shadoers </strong>
-</div>
+<div class="p-4">
 
-<div class="horizontal-scroll-container my-2 pb-4">
-  <% @fans.each do |fan| %>
-    <%= link_to image_tag(fan.default_profile_pic, width: 90, class: 'rounded-circle'), fan_path(fan) %>
-  <% end %>
-</div>
+  <%= render "navbar_athlete_dashboard" %>
 
-
-<div class="container-fluid orange-bg-colored p-2">
-  <div class="row p-2">
-    <div class="col-6">
-      <div class="card p-2">
-        Your total <br>
-       <span class="fw-bold"> <%= number_to_currency(@valSubByDate.values.sum) %> </span>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="card p-2">
-        Monthly average <br>
-       <span class="fw-bold"> <%= number_to_currency(@valSubCurrentMonth.values.sum) %> </span>
-      </div>
-    </div>
+  <div class="my-2">
+    <strong> My shadoers </strong>
   </div>
-  <div class="row p-2">
-    <div class="col-6">
-      <div class="card p-2">
-        Current month
-        <span class="fw-bold"><%= Time.now.strftime('%B') %></span>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="card p-2">
-        <%= "#{@athlete.campaigns.count} #{'campaign'.pluralize(@athlete.campaigns.count)}" %>
-        <span class="fw-bold"><%= truncate(@athlete.campaigns.first.title, length: 20) %></span>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-sm-6 mb-2">
-    <div class="card card-with-effect">
-      <div class="card-body">
-        <h5 class="card-title"> Number of posts: <%= @posts.count %> </h5>
-        <p class="card-text">
-          <%= render "charts/chartPiePostsAthlete" %>
-        </p>
+  <div class="horizontal-scroll-container my-2 pb-4">
+    <% @fans.each do |fan| %>
+      <%= link_to image_tag(fan.default_profile_pic, width: 90, class: 'rounded-circle'), fan_path(fan) %>
+    <% end %>
+  </div>
+
+
+  <div class="container-fluid orange-bg-colored p-2 my-2">
+    <div class="row p-2">
+      <div class="col-6">
+        <div class="card p-2">
+          Your total <br>
+        <span class="fw-bold"> <%= number_to_currency(@valSubByDate.values.sum) %> </span>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card p-2">
+          Monthly average <br>
+        <span class="fw-bold"> <%= number_to_currency(@valSubCurrentMonth.values.sum) %> </span>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <div class="col-sm-6 mb-2">
-    <div class="card card-with-effect">
-      <div class="card-body">
-        <h5 class="card-title"> Number of subscribers: <%= @followers.count %> </h5>
-        <p class="card-text">
-            <%= render "charts/chartLineFansAthlete" %>
-        </p>
+    <div class="row p-2">
+      <div class="col-6">
+        <div class="card p-2">
+          Current month
+          <span class="fw-bold"><%= Time.now.strftime('%B') %></span>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card p-2">
+          <%= "#{@athlete.campaigns.count} #{'campaign'.pluralize(@athlete.campaigns.count)}" %>
+          <span class="fw-bold"><%= truncate(@athlete.campaigns.first.title, length: 20) %></span>
+        </div>
       </div>
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-sm-6 mb-2">
+      <div class="card card-with-effect">
+        <div class="card-body">
+          <h5 class="card-title"> Number of posts: <%= @posts.count %> </h5>
+          <p class="card-text">
+            <%= render "charts/chartPiePostsAthlete" %>
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-sm-6 mb-2">
+      <div class="card card-with-effect">
+        <div class="card-body">
+          <h5 class="card-title"> Number of subscribers: <%= @followers.count %> </h5>
+          <p class="card-text">
+              <%= render "charts/chartLineFansAthlete" %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>

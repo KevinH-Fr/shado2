@@ -16,13 +16,15 @@ module CampaignsHelper
       if user_signed_in?  
 
         if subscribed_fan_to_campaign?(campaign, fan_user)
-          concat(content_tag(:div, data: { turbo: false }) do
-            form_with(url: :unsubscribe_session) do |f|
-              concat(f.hidden_field(:id, value: campaign.id))
-              concat(f.submit('Unsubscribe', class: 'btn btn-secondary w-100 fa fa-fade', style: 'font-family: Arial, sans-serif;'))
-            end
-          end)
 
+          if campaign.recurrent
+            concat(content_tag(:div, data: { turbo: false }) do
+              form_with(url: :unsubscribe_session) do |f|
+                concat(f.hidden_field(:id, value: campaign.id))
+                concat(f.submit('Unsubscribe', class: 'btn btn-secondary w-100 fa fa-fade', style: 'font-family: Arial, sans-serif;'))
+              end
+            end)
+          end
         else
           concat(content_tag(:div, data: { turbo: false }) do
             form_with(url: :create_checkout_session) do |f|

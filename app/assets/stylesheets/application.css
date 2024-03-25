@@ -322,3 +322,9 @@ border-right: 1px solid rgb(180, 180, 180);
   height: 55px;
  /* background-color: #343a40 !important;*/
 }
+
+
+.card-connexion{
+  width: 90%;
+  max-width: 500px;
+}

@@ -12,13 +12,13 @@
   <% end %>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id, value: current_user.id %>
+    <%#= form.label :user_id, style: "display: block" %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
-  <div>
-    <%= form.label :pseudo, style: "display: block" %>
-    <%= form.text_field :pseudo %>
+  <div class="input-group input-group mb-2">
+    <%= form.label :pseudo, class: "input-group-text label-colored" %>
+    <%= form.text_field :pseudo, class: "form-control input-colored" %>
   </div>
   
   <div class="input-group input-group mb-2">
@@ -27,12 +27,11 @@
   </div>
 
 
-  <div>
-    <%= form.label :bio, style: "display: block" %>
-    <%= form.text_area :bio %>
+  <div class="input-group input-group mb-2">
+    <%= form.label :bio, class: "input-group-text label-colored" %>
+    <%= form.text_area :bio, class: "form-control input-colored" %>
   </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+  <%= custom_submit_button("Create fan") %>
+
 <% end %>

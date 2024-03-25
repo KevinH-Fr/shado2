@@ -52,7 +52,10 @@ class CampaignsController < ApplicationController
   def unsubscribe_session
 
 
+    
     subscription_id = fan_user.subscriptions.find_by(campaign: @campaign, status: "paid").stripe_subscription_id # Replace with your actual subscription ID
+
+    puts "__________________________________test unsub: #{fan_user.subscriptions.first.stripe_subscription_id}____________________________________"
         
     begin
       stripe_subscription = Stripe::Subscription.retrieve(subscription_id)

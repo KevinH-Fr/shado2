@@ -6,12 +6,19 @@ class StripeController < ApplicationController
       campaign_id = session.metadata.campaign_id
       @campaign = Campaign.find(campaign_id)
 
-      subscription_id = @campaign.recurrent ? session.subscription : nil
+
+      product_id = @campaign.stripe_product_id
+      #subscription_id = @campaign.recurrent ? @campaign.stripe_price_id : nil
+
+      subscription_id =  session.subscription 
+
+      puts "_______________test sub id #{subscription_id}_______________________________"
+
 
       Subscription.find_or_create_by(
         fan: Fan.where(user: current_user.id).first, 
         campaign: @campaign, 
-        stripe_product_id: subscription_id,
+        stripe_product_id: product_id,
         stripe_subscription_id: subscription_id,
          
         ) do |subscription|
