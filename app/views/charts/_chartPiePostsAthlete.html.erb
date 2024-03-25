@@ -2,14 +2,14 @@
   <canvas id="myChartPie"></canvas>
 </div>
 
-<% posts = @athlete.posts.count %>
+<% posts = @athlete&.posts&.count %>
 
-<% posts_without_media = @posts_without_media.count %>
-<% posts_with_images = @posts_with_images.count %>
-<% posts_with_videos = @posts_with_videos.count %>
+<% posts_without_media = @posts_without_media&.count %>
+<% posts_with_images = @posts_with_images&.count %>
+<% posts_with_videos = @posts_with_videos&.count %>
 
 <% @data = [posts_without_media, posts_with_images, posts_with_videos] %>
-<% @nbTotal = @posts.count %>
+<% @nbTotal = @posts&.count %>
 
 <script>
   var couleur1 = 'rgb(184, 187, 212)';

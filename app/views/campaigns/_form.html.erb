@@ -32,6 +32,12 @@
     <%#= form.text_field :periodicity, class: "form-control input-colored" %>
   </div>
 
+  <div class="form-check form-switch">
+    <%= form.label :principale, class: "form-check-label" %>
+    <%= form.check_box :principale, 
+          checked: @is_principale.present? ? @is_principale : campaign.principale, 
+          class: "form-check-input" %>
+  </div>
 
   <div class="form-check form-switch">
     <%= form.label :recurrent, class: "form-check-label" %>

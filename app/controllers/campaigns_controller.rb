@@ -16,6 +16,9 @@ class CampaignsController < ApplicationController
   # GET /campaigns/new
   def new
     @campaign = Campaign.new
+
+    @is_principale = params[:principale] == 'true'
+
   end
 
   # GET /campaigns/1/edit
@@ -77,6 +80,7 @@ class CampaignsController < ApplicationController
   def create
     @campaign = Campaign.new(campaign_params)
 
+
     respond_to do |format|
       if @campaign.save
 
@@ -122,7 +126,8 @@ class CampaignsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def campaign_params
-      params.require(:campaign).permit(:athlete_id, :title, :description, :periodicity, :recurrent, :subscription, :target, :start, :end, :thankyounote, :panorama_pic)
+      params.require(:campaign).permit(:athlete_id, :title, :description, :periodicity, :recurrent, :subscription, 
+        :target, :start, :end, :thankyounote, :panorama_pic, :principale)
     end
 
     # a reprendre

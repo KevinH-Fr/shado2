@@ -1,9 +1,15 @@
-<h1>New campaign</h1>
+<div class="p-4">
 
-<%= render "form", campaign: @campaign %>
+  <h1>New 
+    <%= campaign_is_principale_title(params[:principale]) %>
+  </h1>
 
-<br>
+  <%= render "form", campaign: @campaign %>
 
-<div>
-  <%= link_to "Back to campaigns", campaigns_path %>
+  <br>
+
+  <div>
+    <%= link_to "Back to campaigns", campaigns_path %>
+  </div>
+
 </div>

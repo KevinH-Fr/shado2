@@ -11,7 +11,7 @@ class Campaign < ApplicationRecord
     if panorama_pic.attached?
       panorama_pic
     else
-      'panorama_default.jpg'
+      'campaign_default.jpg'
     end
   end
 

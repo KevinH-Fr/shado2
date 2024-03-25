@@ -20,7 +20,12 @@
               <% end %>
             </div>
           
-            <%= link_to "New campaign", new_campaign_path, class: "btn btn-success my-2" %>
+          <% unless @campaigns.where(principale: true).present? %>
+            <%= link_to "Create main campaign", new_campaign_path(principale: true), class: "btn btn-success my-2" %>            
+          <% end %>
+
+          <%= link_to "Create pop up campaign", new_campaign_path, class: "btn btn-outline-success my-2" %>
+
           </p>
         </div>
       </div>

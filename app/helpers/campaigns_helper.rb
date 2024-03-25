@@ -46,4 +46,13 @@ module CampaignsHelper
     end 
   end
 
+  def campaign_is_principale_title(principale)
+    if principale == "true"
+      "Main Campaign"
+    else
+      "Secondary Campaign"
+    end
+
+  end
+
 end
