@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+
+
   def index
     @posts = Post.all.sort_by(&:updated_at).reverse!
       

@@ -1,0 +1,52 @@
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Set the height to full viewport height */
+    overflow: hidden;
+  }
+  
+  .video-container video {
+    min-width: 100%; /* Ensure video covers full width */
+    min-height: 100%; /* Ensure video covers full height */
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .video-container span {
+  /*    max-width: 80%; */
+    position: relative;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+  }
+
+  .btn-join{
+    border-radius: 50px; /* Adjust the border radius as needed */
+    border: 6px solid white; /* White border */
+    background-color: #8ac48c; /* Green background color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .btn-join:hover {
+    background-color: #28602b; /* Darker green background color on hover */
+  }
+
+  .green-colored{
+    background-color: #8ac48c; /* Green background color */
+  }
+
+  .light-grey-colored{
+    background-color: rgb(230, 230, 230);
+  }

@@ -1,0 +1,134 @@
+<h1 class="text-center mb-3">
+    <%= image_tag("shado-logo.png", width: 300) %> 
+</h1>
+
+
+<div class="video-container position-relative">
+  <div data-controller="video">
+    <video autoplay loop muted playsinline
+      src="https://res.cloudinary.com/dukne3lhz/video/upload/v1711484581/zeqp4xervxhlwlq1l3bu.mp4" 
+      type="video/mp4" id="video-background" data-video-target="video">
+    </video>
+  </div>
+
+  <div class="text-container position-absolute top-50 w-100 px-4 mb-4">
+
+
+    <div class="container" style="max-width: 800px;">
+
+      <h1 class="fw-bold mb-4 text-center text-light fs-1">
+        Shado Sports - Share and donate
+      </h1>
+
+
+      <h2 class="text-center text-light my-3">
+        A place where you can share your journey and get support from your community
+      </h2>
+
+
+      <%= link_to pages_index_path, class:"w-100 btn-join mb-3" do %>
+        <i class="me-2 fa fa-solid fa-lg fa-trophy" aria-hidden="true"></i>
+        Joins us !
+      <% end %>
+
+      <%= render 'counters' %>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid green-colored my-2 py-2">   
+    <h2 class="text-light text-center fw-bold my-4">How does it work?</h2>
+    <div class="row justify-content-cente p-0r">
+        <div class="col-md-4 col-sm-12 mb-3">
+            <div class="container">  
+                <%= image_tag("screenshot1.png", class: "img-fluid rounded") %> 
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3">
+            <div class="container">  
+                <%= image_tag("screenshot1.png", class: "img-fluid rounded") %> 
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3 p-0">
+            <div class="video-container">  
+
+                <video autoplay loop muted playsinline
+                    src="https://res.cloudinary.com/dukne3lhz/video/upload/v1711486973/tk6yc00uil3n2wvztdcn.mp4" 
+                    type="video/mp4" id="video-background" data-video-target="video">
+                </video>
+
+            </div>
+        </div>
+    </div>
+
+    <%= link_to pages_index_path, class:"w-100 btn-join mb-3" do %>
+        <i class="me-2 fa fa-solid fa-lg fa-trophy" aria-hidden="true"></i>
+        Joins us !
+    <% end %>
+
+</div>
+
+<div class="container-fluid">
+    <h2 class="fw-bold my-4 ps-4">Share your journey</h2>
+
+    <%= reanimated_svg_with_content("svgs/thankyou.svg", "Exclusive content", "Upload exclusive behind-the-scenes content") %>
+    <%= reanimated_svg_with_content("svgs/thankyou.svg", "Clear objectives", "Tell your goals and visions") %>
+    <%= reanimated_svg_with_content("svgs/thankyou.svg", "Build a community", "Connect more intimately with you fan base, friends and family") %>
+
+</div>
+
+
+<div class="container-fluid">
+    <h2 class="fw-bold my-4 ps-4">Get support</h2>
+
+    <%= reanimated_svg_with_content("svgs/thankyou.svg", "Subscription", "For you fan base to access 100% of your exclusive content, set up a monthly subscription fee") %>
+    <%= reanimated_svg_with_content("svgs/thankyou.svg", "Pop up campaign", "In case of an unplanned event, set up a pop campaign and raise extra cash") %>
+    <%= reanimated_svg_with_content("svgs/thankyou.svg", "Emotional", "Part of the platform fee will be redirected towards charity") %>
+
+</div>
+
+<div class="container-fluid p-0 my-3">
+    <div class="position-relative">
+      <%= image_tag("https://res.cloudinary.com/dukne3lhz/image/upload/v1711489478/pexels-photo-931018_ifewi9.jpg", 
+            class: "img-fluid", 
+            alt: "", 
+            style: "max-height: 200px; width: 100%; height: auto; object-fit: cover;") %>
+
+        <div class="card p-2 green-colored position-absolute top-50 start-50 translate-middle text-center text-white ">
+            <h2>Environment redistribution</h2>
+            <small>part of the revenu will be donated to charity helping the planet</small>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid text-center light-grey-colored rounded p-2 my-1">    
+    <%= reanimated_svg_with_content("svgs/thankyou.svg", "Verified members", "All athletes are verified and approved by our team") %>
+</div>
+
+<div class="container light-grey-colored rounded p-2">    
+    <%= reanimated_svg_with_content("svgs/thankyou.svg", "Selected associations", "Our associations are rigoulously selected and have one comon goal: protect environment") %>
+</div>
+
+<div class="container-fluid green-colored text-light text-center py-3">
+
+    <h2 class="fw-bold my-2">You are ready to go?</h2>
+    <small class=""> Become a member and take a career to the next level</small>
+
+    <%= link_to pages_index_path, class:"w-100 btn-join my-3" do %>
+        <i class="me-2 fa fa-solid fa-lg fa-trophy" aria-hidden="true"></i>
+        Joins us !
+    <% end %>
+
+</div>
+
+<footer>
+  <small>
+    <p class="container-fluid text-center my-5" style="font-style: italic;">
+      Icons by
+      <a class="no-underline" href="https://storyset.com/">Animated illustrations by Storyset</a>
+    </p>
+  </small>   
+</footer>

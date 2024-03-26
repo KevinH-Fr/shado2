@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'landing_page/index'
 
   resources :subscriptions
   resources :sports
@@ -44,6 +45,8 @@ Rails.application.routes.draw do
   
   
   get 'pages/index'
+  get 'landing_page/index'
+
   get 'pages/discover'
 
   get 'search/index'
@@ -87,5 +90,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-   root "pages#index"
+   root "landing_page#index"
 end
