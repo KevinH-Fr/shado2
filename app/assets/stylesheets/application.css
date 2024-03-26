@@ -5,7 +5,7 @@
 
 body {
   /* overflow: hidden;*/
-  font-family: 1.2rem "Fira Sans", serif;
+  font-family: 1.2rem "Gill Sans", sans-serif;
 }
 
 .exclusive-post {
@@ -47,6 +47,10 @@ background-color: #00AFF0;
 
 .orange-bg-colored{
   background-color: rgb(233, 141, 80);
+}
+
+.orange-bg-colored:hover {
+  background-color: rgb(197, 106, 45);
 }
 
 .orange-colored{
@@ -216,7 +220,7 @@ border-right: 1px solid rgb(180, 180, 180);
     
 
     .athlete-discover-img {
-      height: 160px; /* Set your desired height */
+    /*  height: 160px; /* Set your desired height */
       /* You can adjust the value as needed */
       object-fit: cover; /* This ensures the image maintains its aspect ratio */
       
@@ -327,4 +331,13 @@ border-right: 1px solid rgb(180, 180, 180);
 .card-connexion{
   width: 90%;
   max-width: 500px;
+}
+
+
+.bg-light-grey{
+  background-color: #faf8f8;
+}
+
+.card-discover{
+  width: 400px;
 }

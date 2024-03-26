@@ -1,11 +1,13 @@
 <%= render 'pages/feed_selector' %>
 
-<form class="d-flex mx-2 mb-2" role="search">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+<form class="d-flex mx-2 mb-2 position-relative" role="search">
+  <input class="form-control me-2 bg-light-grey px-5" type="search" placeholder="Search" aria-label="Search">
+  <i class="px-3 bi bi-search position-absolute top-50 start-0 translate-middle-y"></i>
 </form>
 
+
+
 <%# test feeds infinite scroll %>
-<div id="athletes" class=""> </div>
+<div id="athletes" class="text-center mt-2"> </div>
 
 <%= turbo_frame_tag :pagination, loading: :lazy, src: pages_discover_path(format: :turbo_stream) %>
-

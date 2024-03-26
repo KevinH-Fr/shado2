@@ -1,5 +1,5 @@
-<div class="card mb-3"> 
-  <div class="card-profile card-with-effect m-0 p-0 mb-2 custom-rounded" id="<%= dom_id athlete %>">
+<div class="card bg-light-grey m-0 p-0 shadow-sm mb-3"> 
+  <div class="m-0 p-0 mb-2 custom-rounded" id="<%= dom_id athlete %>">
     <div class="image_wrapper">
       <div class="sized">
         <%=link_to image_tag(athlete.default_panorama_pic, class: "panorama-img custom-rounded"), athlete_path(athlete)  %> 
@@ -53,7 +53,7 @@
 
     <% end %>
 
-    <%= link_to root_path, class: "btn w-100 btn-outline-secondary text-dark mt-1 mb-4" do %>
+    <%= link_to root_path, class: "btn w-100 btn-outline-secondary text-dark my-1" do %>
       <i class="fa fa-rocket mx-1"></i>
       <span class="fw-bold"> My objectives </span>
     
@@ -72,7 +72,7 @@
     <% end %>
   <% else %>
     <% athlete.campaigns.each do |campaign| %>
-      <div class="card my-2 p-2">
+      <div class="card bg-light-grey shadow-sm my-2 p-2">
         <%= render campaign %>
       </div>
     <% end %>

@@ -1,17 +1,18 @@
 <%# posts infinite scroll pagination %>
-<%= turbo_stream.append :athletes do %>
-  <div class="container-fluid d-flex justify-content-center my-3">
-    <div class="row row-cols-2 g-3">
+
+
+  <%= turbo_stream.append :athletes do %>
+
+    <div class="container-fluid d-flex justify-content-center my-1">
       <% @athletes.each do |athlete| %>
-        <div class="col">
+        <div class="container card-discover m-2">
           <%= link_to athlete_path(athlete), class: "no-underline" do %>
             <%= render partial: 'athletes/athlete_mini', locals: { athlete: athlete } %>
           <% end %>
         </div>
       <% end %>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
 
 <%= turbo_stream.replace :pagination do %>

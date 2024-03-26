@@ -8,11 +8,7 @@ class StripeController < ApplicationController
 
 
       product_id = @campaign.stripe_product_id
-      #subscription_id = @campaign.recurrent ? @campaign.stripe_price_id : nil
-
       subscription_id =  session.subscription 
-
-      puts "_______________test sub id #{subscription_id}_______________________________"
 
 
       Subscription.find_or_create_by(

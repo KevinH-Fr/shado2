@@ -19,7 +19,7 @@ class PagesController < ApplicationController
     @athletes = Athlete.all.sort_by(&:updated_at).reverse!
       
     page = (params[:page].to_i > 0) ? params[:page].to_i : 1
-    items = 5
+    items = 2
     start = (page - 1) * items
     
     @pagy = Pagy.new(count: @athletes.size, page: page, items: items)

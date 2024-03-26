@@ -9,9 +9,12 @@ class StepsUserController < ApplicationController
 
     def athlete_account
         @sports = Sport.all
+
     end
 
     def athlete_campaign
+       @is_principale = "true"
+
     end
 
     #ajouter first post a athlete en step 4?

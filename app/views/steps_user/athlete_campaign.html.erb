@@ -1,10 +1,13 @@
+<div class="p-4">
+  <h1>Step 3 - Athlete campaign</h1>
 
-<h1>Step 3 - Athlete campaign</h1>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  3 out of 3
+  <hr>
 
-<div class="progress">
-  <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+  <%= render 'campaigns/form', campaign: Campaign.new %>
+
+  <%=  @is_principale %>
 </div>
-3 out of 3
-<hr>
-
-<%= render 'campaigns/form', campaign: Campaign.new %>

@@ -12,13 +12,13 @@
   <% end %>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id, value: current_user.id %>
+    <%#= form.label :user_id, style: "display: block" %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
 
 
-  <div>
+  <div class= "my-1">
     <%= form.label :sport_id, style: "display: block" %>
     <%= form.select :sport_id, @sports.collect { |c| [c.name, c.id] }, 
         {include_blank: :true}, class: "form-select text-center" %>  

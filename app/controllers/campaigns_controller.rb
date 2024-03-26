@@ -17,7 +17,6 @@ class CampaignsController < ApplicationController
   def new
     @campaign = Campaign.new
 
-    @is_principale = params[:principale] == 'true'
 
   end
 

@@ -29,10 +29,10 @@ module UserHelper
       role = "not defined"
     end
 
-    content_tag(:div, class: 'card mb-2 d-flex flex-row justify-content-between align-items-center p-2') do
+    link_to(user_path(user), class: 'card text-decoration-none text-dark mb-2 d-flex flex-row justify-content-between align-items-center p-2') do
       concat image_tag(profilepic, class: 'mini-profile-pic me-2', alt: 'user picture')
-          concat content_tag(:h5, name, class: '')
-      concat link_to('', user_path(user), class: 'btn btn-primary fa fa-arrow-right ms-auto')
+      concat content_tag(:h5, name, class: '')
+      concat content_tag(:span, '', class: 'btn btn-primary fa fa-arrow-right ms-auto') # Keep the arrow icon as before if needed
     end
     
 

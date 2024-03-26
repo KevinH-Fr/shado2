@@ -35,11 +35,11 @@
     <%#= form.label :principale, class: "form-check-label" %>
     <%= form.hidden_field :principale, 
           value: @is_principale.present? ? @is_principale : campaign.principale, 
-          class: "form-check-input" %>
+          class: "" %>
     <%#= form.label :recurrent, class: "form-check-label" %>
     <%= form.hidden_field :recurrent, 
         value: @is_principale.present? ? @is_principale : campaign.principale, 
-        class: "form-check-input" %>
+        class: "" %>
 
   <div class="input-group input-group mb-2">
     <%= form.label :subscription, class: "input-group-text label-colored" %>
