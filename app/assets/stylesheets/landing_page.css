@@ -1,3 +1,7 @@
+body {
+  /* overflow: hidden;*/
+  font-family: 1.2rem "Gill Sans", sans-serif;
+}
 
 .video-container {
     position: relative;
@@ -40,13 +44,19 @@
   }
   
   .btn-join:hover {
-    background-color: #28602b; /* Darker green background color on hover */
+    background-color: #56ac5b; /* Darker green background color on hover */
+    color: white;
   }
 
   .green-colored{
-    background-color: #8ac48c; /* Green background color */
+    background-color: #94d096; /* Green background color */
   }
 
   .light-grey-colored{
     background-color: rgb(230, 230, 230);
   }
+
+  .dark-grey-colored{
+    color: rgb(89, 89, 89);
+  }
+
