@@ -20,24 +20,35 @@ class CampaignsController < ApplicationController
 
 
   def create_checkout_session
+
     price = Stripe::Price.retrieve(@campaign.stripe_price_id)
     mode = price.recurring ? 'subscription' : 'payment'
   
     if mode == 'payment'
-      suggested_price = params[:suggested_price].to_i * 100
-  
+
+      # selection prix boutons ou textbox custom
+      if params[:selected_price].present? 
+        final_price = params[:selected_price].to_i * 100
+      else 
+        final_price = params[:custom_price].to_i * 100
+      end
+    
       line_items = [
         {
           price_data: {
             currency: 'eur',
             product_data: {
-              name: 'Product Name',
+              name: @campaign.title,
+              metadata: {
+                product_id: @campaign.id # Add product identifier as metadata
+              }
             },
-            unit_amount: suggested_price,
+            unit_amount: final_price,
           },
           quantity: 1
         }
       ]
+    
     else
       line_items = [
         {

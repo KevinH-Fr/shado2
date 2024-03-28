@@ -38,42 +38,8 @@
 
   <div class="p-2">
 
-    <% if athlete.campaigns.where(principale: true).present? %>
+    <%= subscription_button(athlete, fan_user) %>
 
-      <% if subscribed_fan_to_campaign?(athlete.campaigns.where(principale: true).first, fan_user) %>
-
-      <%# subscribe ou unsubscribe si fan abonné %>
-        <div data-turbo='false' class="mt-4">
-          <%= form_with url: :unsubscribe_session do |f| %>
-            <%= f.hidden_field :id, value: athlete.campaigns.where(principale: true).first.id %>
-            <%#= f.submit 'Subscribe', class: "btn w-100 fa orange-bg-colored text-light" %>
-
-            <div class="container-fluid m-0 p-0 text-end">
-              <%= button_tag(type: "submit", class: "btn w-100 bg-secondary text-light fw-bold") do %>
-                <i class="fa-solid fa-plus mx-1"></i>
-                <span class="fw-bold">Unsubscribe</span>
-              <% end %>
-            </div>
-          <% end %>
-        </div>  
-
-      <% else %>
-        <div data-turbo='false' class="mt-4">
-          <%= form_with url: :create_checkout_session do |f| %>
-            <%= f.hidden_field :id, value: athlete.campaigns.where(principale: true).first.id %>
-            <%#= f.submit 'Subscribe', class: "btn w-100 fa orange-bg-colored text-light" %>
-
-            <div class="container-fluid m-0 p-0 text-end">
-              <%= button_tag(type: "submit", class: "btn w-100 orange-bg-colored text-light fw-bold") do %>
-                <i class="fa-solid fa-plus mx-1"></i>
-                <span class="fw-bold">Subscribe</span>
-              <% end %>
-            </div>
-          <% end %>
-        </div>  
-      <% end %>
-      
-    <% end %>
 
     <%= link_to root_path, class: "btn w-100 btn-outline-secondary text-dark my-1" do %>
       <i class="fa fa-rocket mx-1"></i>

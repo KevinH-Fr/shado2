@@ -1,0 +1,26 @@
+<%= form_with url: :create_checkout_session do |f| %>
+  <%= f.hidden_field :id, value: campaign.id %>
+  <div class="collapse" id="collapseAmount<%= campaign.id %>">
+    <div class="d-flex py-1">
+      <!-- Option buttons for selecting the price -->
+      <%= f.button(type: "submit", class: "btn btn-sm btn-outline-primary mx-1", value: 10, name: "selected_price") do %>
+        10 €
+      <% end %>
+      <%= f.button(type: "submit", class: "btn btn-sm btn-outline-primary mx-1", value: 20, name: "selected_price") do %>
+        20 €
+      <% end %>
+      <%= f.button(type: "submit", class: "btn btn-sm btn-outline-primary mx-1", value: 30, name: "selected_price") do %>
+        30 €
+      <% end %>
+
+      <!-- Text field for entering custom price -->
+      <%= text_field_tag :custom_price, nil, class: "form-control mx-1 w-25", placeholder: "Enter amount", type: "number", min: "1", name: "custom_price" %>
+      
+      <!-- Submit button -->
+      <%= button_tag(type: "submit", class: "btn btn-sm btn-success text-light fw-bold ms-1") do %>
+        <i class="fa fa-regular fa-xl fa-circle-check mx-1"></i>
+      <% end %>    
+
+    </div>
+  </div>
+<% end %>
