@@ -65,6 +65,6 @@ class SubscriptionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def subscription_params
-      params.require(:subscription).permit(:campaign_id, :fan_id, :stripe_product_id, :stripe_price_id, :stripe_subscription_id, :status)
+      params.require(:subscription).permit(:campaign_id, :fan_id, :stripe_product_id, :stripe_price_id, :stripe_subscription_id, :status, :amount)
     end
 end

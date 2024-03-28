@@ -52,7 +52,7 @@ module CampaignsHelper
     if principale == "true"
       "Main Campaign"
     else
-      "Secondary Campaign"
+      "Pop Up Campaign"
     end
 
   end

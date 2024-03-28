@@ -6,6 +6,10 @@ class Campaign < ApplicationRecord
 
   has_one_attached :panorama_pic, dependent: :destroy
 
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :target, presence: true, if: -> { principale == false }
+
 
   def default_panorama_pic
     if panorama_pic.attached?
@@ -19,4 +23,14 @@ class Campaign < ApplicationRecord
     self.thankyounote = "Thanks a lot for donating!" if thankyounote.blank?
   end
   
+  def campaign_progress
+  #  50
+      
+    if self.target.to_i > 0
+      target = self.target.to_i 
+      donated = self.subscriptions.sum(:amount).to_i / 100  #retour vers euro plutot que cents
+      progress = donated.to_f / target * 100
+    end 
+  end
+
 end

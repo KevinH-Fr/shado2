@@ -6,7 +6,10 @@ module SubscriptionsHelper
 
     def subscribed_fan_to_campaign?(campaign, fan)
         # Check if the fan has a subscription for a specific campaign
-        Subscription.joins(:campaign).exists?(campaigns: { id: campaign.id }, fan_id: fan.id, status: "paid")
-      end
+        if fan
+            Subscription.joins(:campaign).exists?(campaigns: { id: campaign.id }, fan_id: fan.id, status: "paid")
+        end
+    end
+    
       
 end

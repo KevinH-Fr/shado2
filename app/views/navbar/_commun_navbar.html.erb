@@ -1,7 +1,7 @@
 
 <% if current_user && athlete_user %>
 
-  <%= link_to root_path, class: "navlink position-relative
+  <%= link_to pages_index_path, class: "navlink position-relative
       #{'selected-navbar' if controller_name == 'pages' && action_name == 'index'}" do %>
       <i class="bi bi-house icon-navbar middled"></i>
       <span class="text-navbar middled"> Home </span>
@@ -9,7 +9,7 @@
 
 <% else %>
 
-  <%= link_to root_path, class: "navlink position-relative 
+  <%= link_to pages_index_path, class: "navlink position-relative 
       #{'selected-navbar' if controller_name == 'pages' && action_name == 'index'}" do %>
       <i class="bi bi-house icon-navbar middled"></i>
       <span class="text-navbar middled"> Home </span>

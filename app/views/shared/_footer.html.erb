@@ -15,12 +15,6 @@
 
         <%= active_link_colored(rooms_path, "Chat", "message", 'rooms', 'index') %>
 
-
-
-        <%= button_to "", destroy_user_session_path, method: :delete, 
-            data: {turbo: "false"},
-            class: "fa-solid fa-right-from-bracket btn btn-outline-danger"  %>
-
     <% else %>
     
         <%= link_to '', new_user_session_path, class: "fa-solid fa-user-lock btn btn-warning mx-2" %>

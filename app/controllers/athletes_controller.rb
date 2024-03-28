@@ -12,6 +12,22 @@ class AthletesController < ApplicationController
 
   end
 
+  
+  def display_campaign_type
+    @is_principale = params[:principale]
+  
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.update('new_campaign',
+            partial: "campaigns/form",
+            locals: { campaign: Campaign.new, principale: @is_principale })
+        ]        
+      end
+    end
+  end
+  
+
   def display_media_type
     @media = params[:media]
 

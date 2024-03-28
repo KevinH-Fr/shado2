@@ -16,33 +16,74 @@
 
 </div>
 
-<%# adapter pour correspondre aux datas %>
-<h4 class="text-start mt-2">  progress</h4>
-<div class="progress my-2 mb-4">
-  <div class="progress-bar progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
+  <% unless campaign.principale? %>
+    
+    <%# adapter pour correspondre aux datas %>
+    <h4 class="text-start mt-2">  progress <%= campaign.campaign_progress %>% </h4>
+    <div class="progress my-2 mb-4">
+      <div class="progress-bar bg-warning" role="progressbar" style="width: <%= campaign.campaign_progress %>%;" aria-valuenow="<%= campaign.campaign_progress %>" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>  
 
-
+  <% end %>
 
   <div data-turbo='false'>
-    <%= form_with url: :create_checkout_session do |f| %>
-      <%= f.hidden_field :id, value: campaign.id %>
+    <div class="container-fluid  p-0">
 
-          <div class="container-fluid d-flex p-0">
+      <% if campaign.principale %>
+        <% if subscribed_fan_to_campaign?(campaign, fan_user) %>
 
-                <%= button_tag(type: "submit", class: "btn w-100 orange-bg-colored text-light fw-bold mx-1") do %>
-                  <i class="fa fa-regular fa-heart mx-1"></i>
-                  <span class="fw-bold">Donate now</span>
-                <% end %>            
+          <%= form_with url: :unsubscribe_session do |f| %>
+            <%= f.hidden_field :id, value: campaign.id %>
+            <div class="container-fluid m-0 p-0 text-end">
+              <%= button_tag(type: "submit", class: "btn w-100 bg-secondary text-light fw-bold") do %>
+                <i class="fa-solid fa-plus mx-1"></i>
+                <span class="fw-bold">Unsubscribe</span>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <%= form_with url: :create_checkout_session do |f| %>
+            <%= f.hidden_field :id, value:campaign.id %>
+            <div class="container-fluid m-0 p-0 text-end">
+              <%= button_tag(type: "submit", class: "btn w-100 orange-bg-colored text-light fw-bold") do %>
+                <i class="fa-solid fa-plus mx-1"></i>
+                <span class="fw-bold">Subscribe</span>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+          
+      <% else %>
 
-                <% if athlete_user && appartenance_athlete(athlete_user) %>
-                    <%= link_to edit_campaign_path(campaign), class: "btn btn-outline-secondary" do %>
-                      <i class="fa fa-solid fa-pen-to-square"></i>
-                    <% end %>
-                <% end %>
-              
+        <%= link_to "#collapseAmount#{campaign.id}", 
+              class: "btn w-100 orange-bg-colored text-light fw-bold mx-1", "data-bs-toggle": "collapse", 
+              role: "button", "aria-expanded": "false", "aria-controls": "collapseAmount#{campaign.id}" do %>
+          <i class="fa fa-regular fa-heart mx-1"></i>
+          <span class="fw-bold">Donate</span>
+        <% end %>
+        
+        <%= form_with url: :create_checkout_session do |f| %>
+          <%= f.hidden_field :id, value: campaign.id %>
+          <div class="collapse" id="collapseAmount<%= campaign.id %>">
+            <div class="d-flex py-1">
+              <%= text_field_tag :suggested_price, nil, class: "form-control mx-1", placeholder: "Enter amount", type: "number", min: "1" %>           
+              <%= button_tag(type: "submit", class: "btn  btn-success text-light fw-bold ms-1") do %>
+                <i class="fa fa-regular fa-xl fa-circle-check mx-1"></i>
+              <% end %>    
+            </div>
           </div>
-    <% end %>
+        <% end %>
+
+        <% if athlete_user && appartenance_athlete(athlete_user) %>
+          <div class="container-fluid text-start my-1 p-0">
+            <%= link_to edit_campaign_path(campaign), class: "btn btn-outline-secondary" do %>
+              <i class="fa fa-solid fa-pen-to-square"></i>
+            <% end %>
+          </div>
+        <% end %>
+              
+      <% end %>
+    </div>
   </div>
 
   <% if athlete_user && appartenance_athlete(athlete_user) %>

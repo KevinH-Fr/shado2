@@ -40,7 +40,7 @@
       <div class="col-6">
         <div class="card p-2">
           <%= "#{@athlete.campaigns.count} #{'campaign'.pluralize(@athlete.campaigns.count)}" %>
-          <span class="fw-bold"><%= truncate(@athlete.campaigns.first.title, length: 20) %></span>
+          <span class="fw-bold"><%= truncate(@athlete.campaigns.first&.title, length: 20) %></span>
         </div>
       </div>
     </div>

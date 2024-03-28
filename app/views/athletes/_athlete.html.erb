@@ -13,18 +13,23 @@
       <div class=""> <%= Sport.find(athlete.sport_id).name if athlete.sport_id.present?  %></div>
       <div class="m-0 p-0">
         <% if appartenance_athlete(athlete)  %>
-          <%= link_to edit_athlete_path(athlete), class: "btn m-0 p-0" do %>
-            <i class="fa-solid fa-xl text-secondary fa-pen-to-square m-1"></i>
-          <% end %>
+          <div class="container p-0 my-1 d-flex">
+            <%= link_to edit_athlete_path(athlete), class: "btn btn-secondary me-1" do %>
+              <i class="fa-solid fa-xl fa-pen-to-square me-1"></i>
+              <span class="fw-bold">Edit</span>
+            <% end %>
+            
+            <%= button_to destroy_user_session_path, method: :delete, 
+              data: {turbo: "false"},
+              class: "btn btn-danger" do %>
+              <i class="fa-solid fa-xl fa-right-from-bracket me-1"></i>
+              <span class="fw-bold">Log out</span>
+
+            <% end %>
+            
+          </div>
         <% end %>
       </div>
-
-
-        <%#= link_to new_campaign_path(), class: "btn btn-sm btn-success" do %>
-          <!--i class="fa-solid fa-money-bill-wave m-1"></i>
-          <span class=""> New campaign  </span-->
-        <%# end %>
-
 
     </div>
         
@@ -33,24 +38,41 @@
 
   <div class="p-2">
 
-    <% if athlete.campaigns.first %>
-    <%# changer pour mapper main campaign %>
-      <div data-turbo='false' class="mt-4">
-        <%= form_with url: :create_checkout_session do |f| %>
-          <%= f.hidden_field :id, value: athlete.campaigns.first.id %>
-          <%#= f.submit 'Subscribe', class: "btn w-100 fa orange-bg-colored text-light" %>
+    <% if athlete.campaigns.where(principale: true).present? %>
 
-          <div class="container-fluid m-0 p-0 text-end">
-            <%= button_tag(type: "submit", class: "btn w-100 orange-bg-colored text-light fw-bold") do %>
-              <i class="fa-solid fa-plus mx-1"></i>
-              <span class="fw-bold">Subscribe</span>
-            <% end %>
-          </div>
+      <% if subscribed_fan_to_campaign?(athlete.campaigns.where(principale: true).first, fan_user) %>
 
+      <%# subscribe ou unsubscribe si fan abonné %>
+        <div data-turbo='false' class="mt-4">
+          <%= form_with url: :unsubscribe_session do |f| %>
+            <%= f.hidden_field :id, value: athlete.campaigns.where(principale: true).first.id %>
+            <%#= f.submit 'Subscribe', class: "btn w-100 fa orange-bg-colored text-light" %>
 
-        <% end %>
-      </div>  
+            <div class="container-fluid m-0 p-0 text-end">
+              <%= button_tag(type: "submit", class: "btn w-100 bg-secondary text-light fw-bold") do %>
+                <i class="fa-solid fa-plus mx-1"></i>
+                <span class="fw-bold">Unsubscribe</span>
+              <% end %>
+            </div>
+          <% end %>
+        </div>  
 
+      <% else %>
+        <div data-turbo='false' class="mt-4">
+          <%= form_with url: :create_checkout_session do |f| %>
+            <%= f.hidden_field :id, value: athlete.campaigns.where(principale: true).first.id %>
+            <%#= f.submit 'Subscribe', class: "btn w-100 fa orange-bg-colored text-light" %>
+
+            <div class="container-fluid m-0 p-0 text-end">
+              <%= button_tag(type: "submit", class: "btn w-100 orange-bg-colored text-light fw-bold") do %>
+                <i class="fa-solid fa-plus mx-1"></i>
+                <span class="fw-bold">Subscribe</span>
+              <% end %>
+            </div>
+          <% end %>
+        </div>  
+      <% end %>
+      
     <% end %>
 
     <%= link_to root_path, class: "btn w-100 btn-outline-secondary text-dark my-1" do %>
@@ -66,9 +88,15 @@
 </div>
 
 <div>
+
+<%# voir si besoin de campaign public et de separer fan et ahtlete %>
   <% if fan_user %>
     <% athlete.campaigns.each do |campaign| %>
-      <%= campaign_public(campaign) %>
+      <div class="card bg-light-grey shadow-sm my-2 p-2">
+        <%= render campaign %>
+      </div>
+
+      <%#= campaign_public(campaign) %>
     <% end %>
   <% else %>
     <% athlete.campaigns.each do |campaign| %>

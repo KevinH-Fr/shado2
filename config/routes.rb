@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :athletes do
     collection do
       post 'display_media_type'
+      post 'display_campaign_type'
+
     end
   end
 

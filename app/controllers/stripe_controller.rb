@@ -16,6 +16,7 @@ class StripeController < ApplicationController
         campaign: @campaign, 
         stripe_product_id: product_id,
         stripe_subscription_id: subscription_id,
+        amount: session.amount_total
          
         ) do |subscription|
           subscription.status = 'paid'

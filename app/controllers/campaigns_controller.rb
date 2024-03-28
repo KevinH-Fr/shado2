@@ -4,23 +4,17 @@ class CampaignsController < ApplicationController
 
   before_action :set_campaign, only: %i[ show edit update destroy create_checkout_session unsubscribe_session ]
 
-  # GET /campaigns or /campaigns.json
   def index
     @campaigns = Campaign.all
   end
 
-  # GET /campaigns/1 or /campaigns/1.json
   def show
   end
 
-  # GET /campaigns/new
   def new
     @campaign = Campaign.new
-
-
   end
 
-  # GET /campaigns/1/edit
   def edit
   end
 
@@ -29,32 +23,51 @@ class CampaignsController < ApplicationController
     price = Stripe::Price.retrieve(@campaign.stripe_price_id)
     mode = price.recurring ? 'subscription' : 'payment'
   
-    session = Stripe::Checkout::Session.create({
-      metadata: {
-        campaign_id: @campaign.id, 
-      },
-      customer_email: current_user.email,
-      line_items: [
+    if mode == 'payment'
+      suggested_price = params[:suggested_price].to_i * 100
+  
+      line_items = [
+        {
+          price_data: {
+            currency: 'eur',
+            product_data: {
+              name: 'Product Name',
+            },
+            unit_amount: suggested_price,
+          },
+          quantity: 1
+        }
+      ]
+    else
+      line_items = [
         {
           price: @campaign.stripe_price_id,
           quantity: 1,
         }
-      ],
-      mode: mode,
-      success_url: root_url + "purchase_success?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url:  campaign_url(@campaign),
-    })
+      ]
+    end
+  
+    session = Stripe::Checkout::Session.create(
+      {
+        metadata: {
+          campaign_id: @campaign.id
+        },
+        customer_email: current_user.email,
+        line_items: line_items,
+        mode: mode,
+        success_url: root_url + "purchase_success?session_id={CHECKOUT_SESSION_ID}",
+        cancel_url: campaign_url(@campaign),
+      }
+    )
   
     redirect_to session.url, allow_other_host: true, status: 303
   end
+  
 
+  
   def unsubscribe_session
 
-
-    
-    subscription_id = fan_user.subscriptions.find_by(campaign: @campaign, status: "paid").stripe_subscription_id # Replace with your actual subscription ID
-
-    puts "__________________________________test unsub: #{fan_user.subscriptions.first.stripe_subscription_id}____________________________________"
+    subscription_id = fan_user.subscriptions.find_by(campaign: @campaign, status: "paid").stripe_subscription_id 
         
     begin
       stripe_subscription = Stripe::Subscription.retrieve(subscription_id)
@@ -132,7 +145,6 @@ class CampaignsController < ApplicationController
         :target, :start, :end, :thankyounote, :panorama_pic, :principale)
     end
 
-    # a reprendre
     def create_stripe_product_and_price(campaign)
       # Create a product in Stripe
       product = Stripe::Product.create(name: campaign.title, description: campaign.description)
@@ -150,7 +162,9 @@ class CampaignsController < ApplicationController
         price = Stripe::Price.create({
           product: product.id,
           currency: 'eur',
-          custom_unit_amount: { enabled: true },
+          custom_unit_amount: {
+            enabled: true
+          },
         })
       end
     
